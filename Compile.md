@@ -82,7 +82,7 @@ Claude must follow these rules:
 
 **CMP-21.** When Claude asked questions, the end notice adds " Claude has N questions about the model." (singular: "1 question").
 
-**CMP-26.** Questions should have a reply button, clicking it will open note at text responsible.
+**CMP-26.** Questions should have a reply button, clicking it will open note at rule that needs updating, if that is unavailable then open at heading. If everything fails then just the top of the note. Later after [[Team sync]] is implemented it will archive decisions for team.
 
 ## Last compile marker
 
