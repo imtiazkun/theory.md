@@ -21,7 +21,7 @@ The compile report is how Claude talks back to the engineer. Why: questions and 
 6. "Questions about the model"
 7. "Changes to the code"
 8. "Revisions compiled": subject, author, date and short hash
-9. "Activity", folded
+9. "Activity", folded, except while a permission card waits
 
 **REP-5.** A section with nothing in it is left out.
 
@@ -38,6 +38,14 @@ The compile report is how Claude talks back to the engineer. Why: questions and 
 ## Activity log
 
 **REP-9.** Activity lists Claude's tool calls, one line each ("Tool: detail"), live while the compile runs. It keeps the last 500 lines.
+
+## Permission cards
+
+**REP-13.** A permission request (see [[Compile]]) appears as a card in Activity, at the point where Claude asked. While a card waits, Activity is open and scrolled to the card.
+
+**REP-14.** The Deny button counts down the time left, from "Deny (2:00)" to "Deny (0:00)". At zero, the request is denied.
+
+**REP-15.** Once answered, the card becomes one line in Activity: "Allowed: {command}", "Always allowed: {command}", "Denied: {command}" or "Timed out: {command}". The answer is kept with the report.
 
 ## Where reports live
 
