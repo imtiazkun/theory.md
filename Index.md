@@ -1,1 +1,1 @@
-Manifesting theory
+Theory.md is a collaboration tool for teams of engineers to build software in an AI-assisted workflow. 
