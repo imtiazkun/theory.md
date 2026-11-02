@@ -82,7 +82,7 @@ Claude must follow these rules:
 
 **CMP-21.** When Claude asked questions, the end notice adds " Claude has N questions about the model." (singular: "1 question").
 
-**CMP-26.** Questions should have a resolve button each to reply to and run compile again. Add a  auto resolve button, icon button with sparkle that will prompt claude to resolve it. 
+**CMP-26.** Questions should have a reply button, clicking it will open note at text responsible.
 
 ## Last compile marker
 
