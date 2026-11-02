@@ -69,6 +69,32 @@ A suggestion is ideation for the engineer. It is never model text. Why: the word
 
 **REP-15.** Once answered, the card becomes one line in Activity: "Allowed: {command}", "Always allowed: {command}", "Denied: {command}", "Timed out: {command}" or "Withdrawn: {command}". The answer is kept with the report. Why keep withdrawn cards: the log must show every request Claude made, even one nobody answered.
 
+## Pull requests
+
+**REP-25.** A finished compile shows a Create PR button beside its status when at least one repository has an open compile branch with commits and no pull request yet (see "Compile branches" in [[Compile]]).
+
+**REP-26.** Create PR opens the Create PR page in a new tab. The page has a shared Title and Body, and one section per repository with commits:
+- the repository name and `{compile branch} → {base}`
+- the commits on the compile branch
+- Base, a dropdown of the remote's branches, set to the compile branch's base
+- Draft, a toggle, off by default
+- Reviewers, GitHub usernames separated by commas, empty by default
+- "Use the shared title and body", a toggle, on by default. Turning it off shows that repository's own Title and Body, filled from the shared ones.
+
+**REP-27.** The Title defaults to the subject of the latest compiled revision. The Body defaults to empty.
+
+**REP-28.** Each Body box has a generate button with a sparkle, the same as the commit message (CMT-7). It runs Claude Code with no tools, using the model and effort from [[Settings]]. Claude gets the compile's summary, the revisions compiled, the problems and questions still open, and the changes for that repository (all repositories for the shared Body). The generated text replaces the box's text, and the engineer may edit it. Why no tools: the body is drawn from the report, and generating it must never change code or model.
+
+**REP-29.** Create pushes each compile branch to its repository's `origin` and opens a pull request with `gh`, using that section's title, body, base, draft and reviewers. Once every pull request exists, each body gets a footer linking the vault revisions compiled and the pull requests in the other repositories. Why: a reviewer of one repository must find the rest of the same compile.
+
+**REP-30.** A repository without a GitHub `origin`, or a machine without a logged-in `gh`, shows the reason in its section and has no Create. The other repositories still work.
+
+**REP-31.** When a repository fails, its section shows "Couldn't create the pull request: {reason}" and keeps its fields, so Create can be tried again. Pull requests already created stay.
+
+**REP-32.** Once pull requests exist, the report lists each one with its repository, link and state: draft, open, merged or closed. The state refreshes when the report opens. Create PR is then hidden for those repositories.
+
+**REP-33.** Text on the Create PR page goes only to GitHub. It is never written into the vault. Closing the page discards unsent text.
+
 ## Where reports live
 
 **REP-10.** Reports live in the plugin's data file, `.obsidian/plugins/theory-md/data.json`, which git ignores. They are never written into the vault.

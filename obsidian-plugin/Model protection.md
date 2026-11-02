@@ -1,4 +1,4 @@
-These rules must hold in every compile. Why: the model is the source of truth only while humans alone write it (see [[Index]]).
+These rules must hold in every compile. Why: the model is the source of truth only while humans alone write it (see [the root Index](../Index.md)).
 
 ## Read-only snapshot
 

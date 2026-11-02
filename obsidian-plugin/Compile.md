@@ -28,6 +28,8 @@ These checks run in this order. When one fails, the compile doesn't start and th
 
 **CMP-9.** At least one revision must be pending. Otherwise: "Every committed revision is already compiled."
 
+**CMP-36.** Every repository in the project folder must have no uncommitted changes. Otherwise: "Compile failed: These repositories have uncommitted changes: {repos}. Commit or stash them first." Why: the engineer's unfinished work must never end up on a compile branch.
+
 ## What Claude receives
 
 **CMP-10.** Claude receives:
@@ -52,11 +54,14 @@ Claude must follow these rules:
 - When the model is unclear, incomplete or contradicts itself, Claude asks a question naming the notes. Claude never guesses. Claude carries on with the parts that are clear.
 - Claude changes files only inside the project folder.
 - Before changing a repository, Claude reads its `AGENTS.md` (and `CLAUDE.md`, if there is one) and follows it, including how to test.
+- Notes at the model root describe the whole system. Notes in a folder named after a repository describe that repository only.
+- Before changing a repository, Claude also reads `instructions.md` in that repository's model folder and follows it. When it disagrees with `AGENTS.md`, the model's `instructions.md` wins, because the model is the source of truth.
 - Every code commit ends with `Model-Revision: <vault commit>`.
 - When there are several repositories, every change and problem starts with the repository name in brackets, like "[mobile] …".
 - Anything that went wrong goes in problems.
 - A problem that comes from the model carries anchors: the note, the heading and a quote copied exactly from the note, under 200 characters.
 - Claude reports failed when the code doesn't match the model at the end.
+- Claude commits on the branch the plugin checked out. Claude never creates, switches, merges or pushes branches.
 
 ## How Claude runs
 
@@ -112,6 +117,24 @@ Claude must follow these rules:
 **CMP-22.** The marker moves to the compiled revision once Claude has run, whether the compile succeeded or failed. Why: failed revisions must not be retried by themselves. Re-applying a failed revision is a human decision.
 
 **CMP-23.** The marker never moves on cancel, or when the compile can't start.
+
+**CMP-43.** Pull requests never move the marker. A closed pull request leaves the marker where it is. Why: re-applying a revision is a human decision, the same as after a failure.
+
+## Compile branches
+
+Each compile is a branch. Why: code changes from the model reach the main line only through a pull request a person reviews.
+
+**CMP-37.** Before Claude runs, the plugin checks out a compile branch in every repository in the project folder. The plugin does this, never Claude. Why: every compile must land on a branch, whatever Claude does.
+
+**CMP-38.** A new compile branch is named `theory/compile-{revision}`, after the short hash of the latest revision being compiled. Every repository gets the same name. Its base is the branch that was checked out when the compile started. Why: the same name shows which branches in different repositories came from the same compile.
+
+**CMP-39.** A repository may have at most one open compile branch. A compile branch is open until it is merged into its base or its pull request is closed. When a repository already has an open compile branch, the compile checks it out and adds commits to it. It never starts a second one. Why: a new compile from the base would not see the earlier unmerged changes, and Claude would redo them or the two would conflict.
+
+**CMP-40.** After Claude finishes, whatever the outcome, a compile branch created by this compile that got no commits is deleted, and its repository goes back to its base. A repository whose compile branch has commits stays on that branch, so the engineer can try the result.
+
+**CMP-41.** The report records, for each repository, the compile branch, its base and the commits this compile added.
+
+**CMP-42.** Compile never pushes. Branches are pushed only from Create PR (see [[Compile report]]).
 
 ## Cancel
 

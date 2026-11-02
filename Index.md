@@ -30,16 +30,8 @@ The people who understand the system stay the source of truth.
 
 INV-1 applies only to compiling this model into theory.md's own code. It is not a feature of theory.md, and the plugin must not add it to the prompt for other vaults. Claude reads it here, in the snapshot.
 
-## Notes
+## Repositories
 
-- [[Concepts]]: the words every other note uses.
-- [[Model protection]]: the rules that keep the AI out of the model.
-- [[Compile]]: how revisions become code, and every outcome.
-- [[Commit]]: how an engineer signs a revision.
-- [[Setup vault]]: how a vault becomes a model.
-- [[Compile report]]: what a compile reports back, and where reports live.
-- [[Failure overlay]]: how a failed compile points back at the notes.
-- [[Note header]]: the realized box and the compile state on each note.
-- [[Workspace]]: what the plugin adds to Obsidian's window.
-- [[Settings]]: every setting and its default.
-- [[Team sync]]: the shared server. Not built yet.
+Each repository in the project folder has a folder of the same name here, with its own index and instructions.
+
+- [[obsidian-plugin/index|obsidian-plugin]]: the Obsidian plugin.

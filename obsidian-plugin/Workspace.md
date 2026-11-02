@@ -36,13 +36,13 @@ Everything theory.md adds to Obsidian's window that other notes don't cover.
 
 ## Ribbon and status bar
 
-**UI-8.** A hammer in the ribbon runs Compile.
+**UI-8.** A hammer in the ribbon runs Compile. A Repositories button in the ribbon opens the Repositories page (see [[Repositories]]).
 
 **UI-9.** The status bar shows "Compiling…" while a compile runs.
 
 ## Commands
 
-**UI-10.** The commands are: Setup vault, Show commit history, Compile, Show compile report, Commit current note. There are no others.
+**UI-10.** The commands are: Setup vault, Show commit history, Compile, Show compile report, Commit current note, Show repositories. There are no others.
 
 ## Hidden folders
 
@@ -50,6 +50,12 @@ Everything theory.md adds to Obsidian's window that other notes don't cover.
 
 **UI-12.** Hidden folders are still committed and must not be sent to Claude.
 
+## Index and instructions files
+
+**UI-19.** In the file explorer, `index.md` and `instructions.md` at the vault root and directly inside a model folder are shown in bold, with an icon to the left of the name: a house for index, a scroll for instructions. Names match ignoring case. Why: they are the entry point and the rules of each part of the model, and must be found at a glance.
+
 ## Compile History
 
 **UI-16.** Beside commit history in the right sidebar should show list of compiles along with when, by who and total amount of token spent in that compile. 
+
+**UI-18.** Each compile in that list shows the state of its pull requests: none, draft, open, merged or closed. With several repositories, it shows each one.
