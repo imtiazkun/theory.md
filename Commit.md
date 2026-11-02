@@ -21,7 +21,7 @@ A commit is how an engineer signs a revision of the model. Why: every line of th
 
 **CMT-6.** The modal shows the file being committed, or the number of changed files.
 
-**CMT-7.** The message box defaults to "Update {NOTE NAME}" for one note, and "Update model" for all files. There should be a generate icon button represented by a sparkle. Clicking it should prompt claude to generate the message content.  
+**CMT-7.** The message box defaults to "Update {NOTE NAME}" for one note, and "Update model" for all files. There should be a generate icon button represented by a sparkle. Clicking it should prompt claude to generate the message content. Sparkle should have a color fade in and out animation.
 
 **CMT-8** When other files also changed, the toggle "Include all changed files" appears, saying how many other files have changes. It is off by default. Why: one intent per commit.
 
