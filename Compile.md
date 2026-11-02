@@ -60,7 +60,7 @@ Claude must follow these rules:
 
 ## How Claude runs
 
-**CMP-13.** Claude Code runs in the project folder, with no chat. It uses the permission mode and allowed commands from [[Settings]]. When Claude needs something the settings don't allow, it asks the engineer with a permission card (see "Permission requests" below).
+**CMP-13.** Claude Code runs in the project folder, with no chat. It uses the permission mode, allowed commands, model and effort from [[Settings]]. When Claude needs something the settings don't allow, it asks the engineer with a permission card (see "Permission requests" below).
 
 **CMP-14.** Claude's tool calls stream into the report's activity log while it runs.
 
@@ -72,7 +72,7 @@ Claude must follow these rules:
 
 **CMP-29.** The engineer answers with one of three buttons:
 - **Allow** allows this one request.
-- **Always allow** allows this request and adds its rule to Allowed commands (see [[Settings]]).
+- **Always allow** allows this request and adds its rule to Allowed commands. Commands will be given by claude else save the exact request (see [[Settings]]).
 - **Deny** refuses this request.
 
 **CMP-30.** A request with no answer after 120 seconds is denied. Why: a compile must never hang because nobody is watching.
@@ -84,6 +84,8 @@ Claude must follow these rules:
 **CMP-33.** When a compile is cancelled, or Obsidian closes, every open request is denied.
 
 **CMP-34.** Each request gets its own card and its own 120 seconds. Requests are never answered in bulk.
+
+**CMP-35.** Claude Code may withdraw a request before anyone answers. Its card closes and its countdown stops. A withdrawn request is not a problem, because nobody refused it.
 
 ## Claude's answer
 

@@ -20,6 +20,8 @@ Everything theory.md adds to Obsidian's window that other notes don't cover.
 
 **UI-4.** When files have uncommitted changes, the tooltip adds that they won't be compiled.
 
+**UI-17.** While a permission card waits, the compile button says "Claude is asking (1:47)", counting down with the card. Clicking it opens the compile report at the card. Why: the engineer may be editing a note with the report tab hidden.
+
 ## Commit history
 
 **UI-5.** The right sidebar shows the active note's commits, newest first: subject, author, relative time and short hash. It follows renames.

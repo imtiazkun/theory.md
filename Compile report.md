@@ -45,7 +45,7 @@ The compile report is how Claude talks back to the engineer. Why: questions and 
 
 **REP-14.** The Deny button counts down the time left, from "Deny (2:00)" to "Deny (0:00)". At zero, the request is denied.
 
-**REP-15.** Once answered, the card becomes one line in Activity: "Allowed: {command}", "Always allowed: {command}", "Denied: {command}" or "Timed out: {command}". The answer is kept with the report.
+**REP-15.** Once answered, the card becomes one line in Activity: "Allowed: {command}", "Always allowed: {command}", "Denied: {command}", "Timed out: {command}" or "Withdrawn: {command}". The answer is kept with the report. Why keep withdrawn cards: the log must show every request Claude made, even one nobody answered.
 
 ## Where reports live
 
