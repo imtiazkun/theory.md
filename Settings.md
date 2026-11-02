@@ -49,7 +49,12 @@ Why: the engineer decides how much thinking turning the theory into code deserve
 
 **CFG-12.** Writes to the model are always denied, whatever this says. See [[Model protection]].
 
-**CFG-16.** Always allow on a permission card adds one rule to the end of this list. For a command, the rule is the exact command, like `Bash(npm run build)`, never a wildcard. For any other tool, the rule is the tool's name. A rule already in the list is never added twice. Why: the engineer approved one command, not a family of commands.
+**CFG-16.** Always allow on a permission card adds one rule to the end of this list. A rule already in the list is never added twice.
+- For a command, the rule is the one Claude Code suggests with the request, like `Bash(npm run:*)`. It may cover a family of commands. When Claude Code suggests none, the rule is the exact command, like `Bash(npm run build)`. Why: one click should cover the commands a build or test routine needs.
+- For a file tool (Edit, Write, NotebookEdit), the rule is that tool on that exact file, like `Edit(//Users/imtiaz/.zshrc)`. It must never be the bare tool name, and never Claude Code's suggestion. Why: a file outside the project folder is the engineer's, and one approval must open one file only.
+- For any other tool, the rule is Claude Code's suggestion, else the tool's name.
+
+The card must show the rule before the engineer clicks Always allow. Why: the engineer must see how much one click allows.
 
 ## Show compile button
 

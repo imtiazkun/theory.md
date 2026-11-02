@@ -31,6 +31,28 @@ The compile report is how Claude talks back to the engineer. Why: questions and 
 
 **REP-7.** The engineer answers a question by editing the model and compiling again, never in chat. Why: the answer must be in the model for the next reader.
 
+## Suggestions
+
+A suggestion is ideation for the engineer. It is never model text. Why: the words in the model must always be written by a person (see INV-11 in [[Model protection]]).
+
+**REP-16.** Each question has a Suggest button below Reply.
+
+**REP-17.** Suggest sends Claude Code this context and nothing else: the question, its anchors, the current text of every note the question names (uncommitted edits included), and the compile's summary. Why: the suggestion must fit the note as the engineer sees it now.
+
+**REP-18.** Suggest runs Claude Code with no tools, using the model and effort from [[Settings]]. Claude reads nothing beyond that context and writes nothing.
+
+**REP-19.** While Claude works, the button says "Suggesting…" and is disabled. One question has at most one suggestion at a time.
+
+**REP-20.** The suggestion appears under its question. It shows the note and heading it is for, the suggested text in an editable box, and one sentence on why. The engineer may edit the text in the box.
+
+**REP-21.** Accept copies the box's text to the clipboard and opens the note at the spot the question is about, the same way Reply does. It shows "Suggestion copied. Write it in the note in your own words." Accept must never write to a note.
+
+**REP-22.** Reject removes the suggestion.
+
+**REP-23.** A suggestion lives only on screen. It is never saved in the report, in plugin data or in the vault. Closing the report discards it.
+
+**REP-24.** When Claude Code fails or gives no suggestion, the box shows "Couldn't get a suggestion: {reason}" and Suggest works again.
+
 ## Problems
 
 **REP-8.** Each problem shows its text and links to its anchors. Clicking a link jumps to the spot. See [[Failure overlay]].

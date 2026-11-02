@@ -72,7 +72,7 @@ Claude must follow these rules:
 
 **CMP-29.** The engineer answers with one of three buttons:
 - **Allow** allows this one request.
-- **Always allow** allows this request and adds its rule to Allowed commands. Commands will be given by claude else save the exact request (see [[Settings]]).
+- **Always allow** allows this request and adds its rule to Allowed commands. CFG-16 in [[Settings]] says which rule.
 - **Deny** refuses this request.
 
 **CMP-30.** A request with no answer after 120 seconds is denied. Why: a compile must never hang because nobody is watching.
