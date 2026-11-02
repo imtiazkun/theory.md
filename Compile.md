@@ -82,6 +82,8 @@ Claude must follow these rules:
 
 **CMP-21.** When Claude asked questions, the end notice adds " Claude has N questions about the model." (singular: "1 question").
 
+**CMP-26.** Questions should have a resolve button each to reply to and run compile again. Add a  auto resolve button, icon button with sparkle that will prompt claude to resolve it. 
+
 ## Last compile marker
 
 **CMP-22.** The marker moves to the compiled revision once Claude has run, whether the compile succeeded or failed. Why: failed revisions must not be retried by themselves. Re-applying a failed revision is a human decision.
