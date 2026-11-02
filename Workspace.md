@@ -47,3 +47,7 @@ Everything theory.md adds to Obsidian's window that other notes don't cover.
 **UI-11.** Folders whose name starts with `_` are greyed out and listed last in the file explorer. Why: they hold helpers like templates, not theory.
 
 **UI-12.** Hidden folders are still committed and must not be sent to Claude.
+
+## Compile History
+
+**UI-16.** Beside commit history in the right sidebar should show list of compiles along with when, by who and total amount of token spent in that compile. 
