@@ -10,6 +10,8 @@ The compile report is how Claude talks back to the engineer. Why: questions and 
 
 **REP-3.** At the top, a dropdown lists past compiles, newest first, with a Compile button beside it.
 
+**REP-12.** The report's Compile button is disabled while a compile runs. Why: only one compile may run at a time (see [[Compile]]).
+
 **REP-4.** Below, in this order:
 1. the status and the revision range (`from → to`, with `start` on the first compile)
 2. Cancel while running, or Clear highlights when this compile's failure is shown in the notes

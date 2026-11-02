@@ -8,13 +8,15 @@ Everything theory.md adds to Obsidian's window that other notes don't cover.
 
 **UI-2.** A floating bar at the bottom right of the editor holds a commit button and a compile button. Settings can hide it.
 
+**UI-13.** While the bar shows, Obsidian's status bar moves to the bottom left of the editor. When the bar hides or the plugin turns off, the status bar goes back. Why: the bar and the status bar must never cover each other.
+
 **UI-3.** The compile button's state, checked in this order:
 1. **Hidden**: the vault isn't set up, or the bar is turned off.
 2. **Compiling…**: a compile runs. Tooltip: "A compile is running. Click to follow it."
 3. **Set up Compile**: no project folder is set. Tooltip: "Choose the project folder this model compiles into."
 4. **Compile**: revisions are pending. A badge shows how many, in the accent colour. Tooltip: "Compile N new revisions into the code."
 5. **Last compile failed**: nothing is pending and the newest report failed. Tooltip: "Click to see what went wrong."
-6. **Up to date**: nothing to do. Tooltip: "Every committed revision is compiled."
+6. **Up to date**: nothing to do. Tooltip: "Every committed revision is compiled." followed by "Commit changes to the model to compile them." when no file has uncommitted changes.
 
 **UI-4.** When files have uncommitted changes, the tooltip adds that they won't be compiled.
 
@@ -25,6 +27,10 @@ Everything theory.md adds to Obsidian's window that other notes don't cover.
 **UI-6.** When the note has uncommitted changes, it says "Uncommitted changes" and offers "Commit…".
 
 **UI-7.** A note without commits shows "No commits yet for this note." A vault that isn't set up shows a Setup vault button.
+
+**UI-14.** With no note open, it says "Open a note to see its commit history."
+
+**UI-15.** The view has a Refresh action. Why: git can change outside Obsidian, and the view must be refreshable by hand.
 
 ## Ribbon and status bar
 
@@ -40,4 +46,4 @@ Everything theory.md adds to Obsidian's window that other notes don't cover.
 
 **UI-11.** Folders whose name starts with `_` are greyed out and listed last in the file explorer. Why: they hold helpers like templates, not theory.
 
-**UI-12.** Hidden folders are still committed and sent to Claude.
+**UI-12.** Hidden folders are still committed and must not be sent to Claude.

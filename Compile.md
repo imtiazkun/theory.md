@@ -22,7 +22,7 @@ These checks run in this order. When one fails, the compile doesn't start and th
 
 **CMP-6.** The project folder must be set. Otherwise: "Compile failed: Choose the project folder in theory.md settings first."
 
-**CMP-7.** The project folder must exist. Otherwise: "Compile failed: The project folder doesn't exist: <path>"
+**CMP-7.** The project folder must exist. Otherwise: "Compile failed: The project folder doesn't exist: {path}"
 
 **CMP-8.** The vault must have at least one commit. Otherwise: "Compile failed: The vault has no commits yet. Commit your notes first."
 
@@ -43,7 +43,9 @@ On the first compile the diff starts from an empty model.
 
 ## What Claude is told
 
-**CMP-12.** Claude must follow these rules:
+**CMP-12.** The plugin gives Claude these rules in every compile, for every vault. This list is complete. A vault may add its own rules in its notes, and Claude reads them from the snapshot. The plugin must not copy a vault's rules into this list.
+
+Claude must follow these rules:
 - The model is read-only. Writing to the model is forbidden.
 - The model is the source of truth. When the code disagrees, the code changes.
 - A note with `realized: false` is written ahead of the code. Claude must not build it and must not count it as a mismatch.

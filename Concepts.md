@@ -2,6 +2,8 @@
 
 The model is the set of Markdown notes and assets in the vault. It says what the software does, why, and sometimes how. Only humans write it. The AI may read it and must never change it.
 
+Obsidian's config folder `.obsidian/` is not part of the model. Git ignores it, so it is never counted as a change, never committed and never sent to Claude.
+
 ## Vault
 
 The vault is the Obsidian vault folder that holds the model. The vault is its own git repository, on branch `main`. The vault is separate from the code.
@@ -46,4 +48,4 @@ A note is realized unless its front matter says `realized: false`. An unrealized
 
 ## Hidden folder
 
-A hidden folder is a folder whose name starts with `_`, like `_templates`. Hidden folders are greyed out and listed last in the file explorer. They are still part of the vault's git history, so Compile sends them to Claude.
+A hidden folder is a folder whose name starts with `_`, like `_templates`. Hidden folders are greyed out and listed last in the file explorer. They are still part of the vault's git history but must never be sent to claude.

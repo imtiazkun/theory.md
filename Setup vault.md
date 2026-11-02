@@ -27,10 +27,9 @@ Setup vault turns an Obsidian vault into a model. Why: the model needs history a
 **SET-8.** Setup adds these lines to `.gitignore` when they're missing, and keeps every other line:
 - `.DS_Store`
 - `.trash/`
-- `.obsidian/workspace*.json`
-- `.obsidian/plugins/theory-md/data.json`
+- `.obsidian/`
 
-Why: these files are personal or machine state, not theory. The plugin's data holds the compile reports, which must stay out of the model.
+Why: these files are personal or machine state, not theory. `.obsidian/` holds Obsidian's settings, the plugin's build and the plugin's data with the compile reports, and none of it is model.
 
 ## Initial commit
 

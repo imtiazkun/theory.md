@@ -42,3 +42,11 @@ These are the only settings. They live in the plugin's data, never in the vault.
 ## Show compile button
 
 **CFG-13.** Shows or hides the floating bar. On by default.
+
+## Older settings
+
+**CFG-14.** When the project folder is empty and the saved data has `codeRepoPath` from an older version, that path becomes the project folder.
+
+**CFG-15.** Problems that older versions saved as plain text become problems without anchors.
+
+Why: upgrading theory.md must never lose an engineer's settings or reports.

@@ -28,6 +28,8 @@ The people who understand the system stay the source of truth.
 
 **INV-1.** Code behaviour this model doesn't describe must be raised as a question in the compile report. Claude must never remove it in the same compile. Why: the model was written after the code, so a gap in the model is more likely than unwanted code. An engineer decides whether the behaviour goes into the model or out of the code.
 
+INV-1 applies only to compiling this model into theory.md's own code. It is not a feature of theory.md, and the plugin must not add it to the prompt for other vaults. Claude reads it here, in the snapshot.
+
 ## Notes
 
 - [[Concepts]]: the words every other note uses.
