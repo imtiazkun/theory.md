@@ -60,9 +60,30 @@ Claude must follow these rules:
 
 ## How Claude runs
 
-**CMP-13.** Claude Code runs unattended in the project folder, with no chat. It uses the permission mode and allowed commands from [[Settings]].
+**CMP-13.** Claude Code runs in the project folder, with no chat. It uses the permission mode and allowed commands from [[Settings]]. When Claude needs something the settings don't allow, it asks the engineer with a permission card (see "Permission requests" below).
 
 **CMP-14.** Claude's tool calls stream into the report's activity log while it runs.
+
+## Permission requests
+
+**CMP-27.** A tool call that Allowed commands doesn't cover must become a permission request. It must never be refused without asking. Why: a refused build or test leaves the change unchecked, and an engineer at the keyboard can say yes in seconds.
+
+**CMP-28.** Each request shows as a card in the compile report (see [[Compile report]]). The card shows the tool, the exact command or file, and the reason Claude gives.
+
+**CMP-29.** The engineer answers with one of three buttons:
+- **Allow** allows this one request.
+- **Always allow** allows this request and adds its rule to Allowed commands (see [[Settings]]).
+- **Deny** refuses this request.
+
+**CMP-30.** A request with no answer after 120 seconds is denied. Why: a compile must never hang because nobody is watching.
+
+**CMP-31.** After a denial or a timeout, Claude carries on without that step. Every denied or timed-out request must appear in the report's problems, naming the command. Why: the engineer must know which check didn't run.
+
+**CMP-32.** Writes to the vault and the snapshot are denied before any card is shown. A card must never offer them, and Always allow must never add them. See INV-4 in [[Model protection]].
+
+**CMP-33.** When a compile is cancelled, or Obsidian closes, every open request is denied.
+
+**CMP-34.** Each request gets its own card and its own 120 seconds. Requests are never answered in bulk.
 
 ## Claude's answer
 
