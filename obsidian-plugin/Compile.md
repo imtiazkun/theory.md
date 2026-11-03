@@ -69,6 +69,16 @@ Claude must follow these rules:
 
 **CMP-14.** Claude's tool calls stream into the report's activity log while it runs.
 
+## The engineer's tools
+
+**CMP-44.** Every command the plugin runs gets the PATH of the engineer's login shell. This covers git, Claude Code and `gh`, and every command Claude runs in turn. Why: Obsidian opened from the Dock doesn't read the shell's startup files. Tools the engineer installed, like `docker` in `~/.docker/bin`, are then missing, and Claude reports them as not installed.
+
+**CMP-45.** The plugin reads that PATH once, when it loads. It runs the shell named in `$SHELL` (`/bin/zsh` when it isn't set) as a login, interactive shell, and reads the PATH it prints. A PATH changed later counts after the plugin reloads.
+
+**CMP-46.** The plugin waits at most 5 seconds for the shell. Why: a broken shell profile must never hang Obsidian.
+
+**CMP-47.** `/usr/bin`, `/usr/local/bin`, `/opt/homebrew/bin` and `~/.local/bin` are always added after the login PATH. When the shell fails or times out, they are added after Obsidian's own PATH instead. Why: git and Claude Code must still be found.
+
 ## Permission requests
 
 **CMP-27.** A tool call that Allowed commands doesn't cover must become a permission request. It must never be refused without asking. Why: a refused build or test leaves the change unchecked, and an engineer at the keyboard can say yes in seconds.

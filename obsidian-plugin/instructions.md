@@ -19,6 +19,7 @@ The writing rules in [the root Instructions](../Instructions.md) apply here. Rul
 - pull request states: only draft and open ones are checked, a failed check keeps the saved state, and a focus refresh within 30 seconds is skipped (REP-35, REP-37, REP-39)
 - Expand: the context it sends (EXP-4, EXP-5), the tools it allows (EXP-6), and that Create note writes an empty note and never commits (EXP-14 to EXP-16)
 - the templates for `index.md` and `instructions.md`: placeholders filled, lines of empty fields left out, and the built-in text when a template is missing or empty (REPO-19 to REPO-22)
+- the login PATH: used when the shell answers, the fallback when the shell fails or takes over 5 seconds, and the extra folders added after it (CMP-44 to CMP-47)
 
 **TEST-5.** Tests that need git must use real git repositories in a new temporary folder, and delete it afterwards. They must never touch the vault, the project folder or the engineer's own repositories. Why: a test must never be able to damage real work.
 

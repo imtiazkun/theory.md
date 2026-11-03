@@ -16,7 +16,7 @@ These rules must hold in every compile. Why: the model is the source of truth on
 
 ## Vault check
 
-**INV-6.** Compile must record the state of every vault file before Claude runs and compare it after. Any file that changed must be named in the report's problems: "These vault files changed while the compile ran: <files>. If you didn't edit them, revert them."
+**INV-6.** Compile must record the state of every vault file before Claude runs and compare it after. Any file that changed must be named in the report's problems: "These vault files changed while the compile ran: {files}. If you didn't edit them, revert them."
 
 This check must not fail the compile on its own. Why: the engineer may be editing notes while a compile runs.
 
