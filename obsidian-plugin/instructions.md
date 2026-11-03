@@ -15,6 +15,8 @@ The writing rules in [the root Instructions](../Instructions.md) apply here. Rul
 - Always allow: which rules a request saves (CFG-16)
 - the snapshot: hidden folders, `.obsidian/` and the root Instructions are left out
 - the index and instructions highlight: exactly the right paths match
+- missing starter files: which ones count as missing, that existing files are never changed, and that only the files written are committed (SET-15, CFG-20 to CFG-22)
+- the templates for `index.md` and `instructions.md`: placeholders filled, lines of empty fields left out, and the built-in text when a template is missing or empty (REPO-19 to REPO-22)
 
 **TEST-5.** Tests that need git must use real git repositories in a new temporary folder, and delete it afterwards. They must never touch the vault, the project folder or the engineer's own repositories. Why: a test must never be able to damage real work.
 

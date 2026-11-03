@@ -10,7 +10,17 @@ These are the only settings. They live in the plugin's data, never in the vault.
 
 ## Vault
 
-**CFG-4.** A Setup vault button runs [[Setup vault]]. When the vault is already a git repository, it says "Already set up" and is disabled.
+**CFG-4.** A Setup vault button runs [[Setup vault]]. When the vault is already a git repository and no starter file is missing (SET-15), it says "Already set up" and is disabled.
+
+**CFG-20.** When the vault is already a git repository but starter files are missing, the button says "Create missing files". Below it, the settings list each missing file by its path, and each missing `.gitignore` line. Why: a vault set up by an older version, or one where a starter file was deleted, must be able to catch up without setting up again.
+
+**CFG-21.** Create missing files writes only the missing files, with the same starter text Setup writes, and adds only the missing `.gitignore` lines. It never changes a file that exists. Why: those files belong to the engineer now.
+
+**CFG-22.** Create missing files then commits only the files it wrote or changed, as "Add missing starter files", signed by the author. Other uncommitted changes in the vault stay uncommitted. Why: one intent per commit. It needs an author first, like Setup (SET-3).
+
+**CFG-23.** After it runs, the notice "Added {n} missing files." appears and the button says "Already set up" again. Any failure shows "Couldn't add the missing files: {reason}", and nothing is committed.
+
+**CFG-24.** The settings check for missing files each time the settings tab opens, and again after the button runs. Nothing is stored.
 
 ## Project folder
 

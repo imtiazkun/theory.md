@@ -8,7 +8,7 @@ The model mirrors the project folder: one folder of notes per repository. Why: e
 
 **REPO-3.** Every model folder always has an `index.md` and an `instructions.md`.
 - `index.md` is the entry note for that repository.
-- `instructions.md` starts with one line pointing to the root Instructions: "The writing rules in [the root Instructions](../Instructions.md) apply here. Rules for Claude that apply only to this repository go below." The engineer adds that repository's rules for Claude below it.
+- `instructions.md` holds the rules for Claude that apply only to that repository. It starts from its template (REPO-19). Its built-in text is one line pointing to the root Instructions: "The writing rules in [the root Instructions](../Instructions.md) apply here. Rules for Claude that apply only to this repository go below." The engineer adds that repository's rules for Claude below it.
 
 **REPO-4.** Compile sends every model folder's `instructions.md` to Claude, and Claude must follow it when changing that repository (see [[Compile]]). Why: a repository may need rules the others don't, like "never add a dependency".
 
@@ -36,7 +36,7 @@ The model mirrors the project folder: one folder of notes per repository. Why: e
 
 **REPO-12.** Opening the page never fetches. The page's Refresh action runs `git fetch` in every repository first, then recomputes. Why: opening the page must be fast and work offline.
 
-**REPO-13.** A repository without a model folder shows "No model folder" and an Add model folder button. It creates the folder with `index.md` ("Manifesting {name}") and `instructions.md` (REPO-3), and commits only those two files as "Add model folder for {name}", signed by the author.
+**REPO-13.** A repository without a model folder shows "No model folder" and an Add model folder button. It creates the folder with `index.md` and `instructions.md`, each from its template (REPO-19), and commits only those two files as "Add model folder for {name}", signed by the author.
 
 ## New repository
 
@@ -52,8 +52,8 @@ The model mirrors the project folder: one folder of notes per repository. Why: e
 **REPO-15.** The form's text goes into the files exactly as typed. Lines for empty fields are left out. No AI writes any of it.
 - `README.md`: the name as the title, the description, the purpose, the stack, and a "Getting started" section with the build, run and test commands.
 - `AGENTS.md`: the stack, the build, test and run commands, the conventions, and the line "The theoretical model in the {vault name} vault, folder {name}/, is the source of truth for this repository."
-- Model `index.md`: a "What this repository is" heading, the description and the purpose.
-- Model `instructions.md`: the line from REPO-3.
+- Model `index.md`: the template filled in with the name, description and purpose (REPO-19).
+- Model `instructions.md`: its template filled in the same way (REPO-19).
 
 **REPO-16.** Create runs these steps in order:
 1. Check the name, that the author is set, and, when the GitHub toggle is on, that `gh` is logged in.
@@ -64,3 +64,22 @@ The model mirrors the project folder: one folder of notes per repository. Why: e
 **REPO-17.** When a step fails, Create stops there. It shows "Couldn't create the repository: {reason}" and lists the steps already done. It never deletes what it created. Why: nothing git recorded may be thrown away silently.
 
 **REPO-18.** After Create, the notice "Created repository {name}." appears, the page shows the new card, and the new model `index.md` opens.
+
+## Templates
+
+**REPO-19.** New repository and Add model folder write a model folder's `index.md` from `_templates/index.md`, and its `instructions.md` from `_templates/instructions.md` (see SET-11 in [[Setup vault]]). They read the templates at that moment, so an edit to one applies from the next repository.
+
+**REPO-20.** In both templates, the placeholders are replaced with the form's text, exactly as typed:
+- `{{name}}`: the repository name.
+- `{{description}}`: the description.
+- `{{purpose}}`: the purpose.
+
+Add model folder has no form, so there `{{description}}` and `{{purpose}}` are empty.
+
+**REPO-21.** A line that holds only a placeholder whose field is empty is left out, with the blank line after it. Every other line stays as it is, including unknown placeholders and `%%` comments.
+
+**REPO-22.** When a template is missing or holds only whitespace, its file gets the built-in text instead. Why: creating a repository must never fail because of a template.
+- `index.md`: a "What this repository is" heading, the description and the purpose, or "Manifesting {name}" when both are empty.
+- `instructions.md`: the line from REPO-3.
+
+**REPO-23.** The template files stay as they are. They are never committed together with the new model folder (REPO-13, REPO-16 step 3).
