@@ -32,7 +32,7 @@ These are the only settings. They live in the plugin's data, never in the vault.
 
 ## Claude Code command
 
-**CFG-8.** The Claude Code CLI, as a command name or an absolute path. Default: `claude`.
+**CFG-8.** The Claude Code CLI, as a command name or an absolute path. Default: `claude`. Used when Agent is "Claude Code" (AGT-4), and always for Expand, commit messages and pull request bodies (AGT-2).
 
 ## Compile model and effort
 

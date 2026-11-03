@@ -20,10 +20,11 @@ The writing rules in [the root Instructions](../Instructions.md) apply here. Rul
 - Expand: the context it sends (EXP-4, EXP-5), the tools it allows (EXP-6), and that Create note writes an empty note and never commits (EXP-14 to EXP-16)
 - the templates for `index.md` and `instructions.md`: placeholders filled, lines of empty fields left out, and the built-in text when a template is missing or empty (REPO-19 to REPO-22)
 - the login PATH: used when the shell answers, the fallback when the shell fails or takes over 5 seconds, and the extra folders added after it (CMP-44 to CMP-47)
+- ACP agents: model writes denied without a card, other requests reaching a card, the answer read from the last JSON block, and a missing agent command (AGT-10 to AGT-15, AGT-19)
 
 **TEST-5.** Tests that need git must use real git repositories in a new temporary folder, and delete it afterwards. They must never touch the vault, the project folder or the engineer's own repositories. Why: a test must never be able to damage real work.
 
-**TEST-6.** Tests must never call Claude Code, GitHub or the network. Calls to `claude` and `gh` are replaced with fakes. Why: tests must be fast, free and work offline.
+**TEST-6.** Tests must never call Claude Code, GitHub or the network. Calls to `claude` and `gh` are replaced with fakes. ACP tests run a small fake agent made in the test's temporary folder, never a real one. Why: tests must be fast, free and work offline.
 
 **TEST-7.** The `obsidian` module is replaced with a small stub in tests. Views, modals and the file explorer are not tested automatically; a person checks them in Obsidian. Why: mocking Obsidian costs more than it catches.
 

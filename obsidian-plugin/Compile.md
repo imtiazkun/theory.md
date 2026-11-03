@@ -65,7 +65,7 @@ Claude must follow these rules:
 
 ## How Claude runs
 
-**CMP-13.** Claude Code runs in the project folder, with no chat. It uses the permission mode, allowed commands, model and effort from [[Settings]]. When Claude needs something the settings don't allow, it asks the engineer with a permission card (see "Permission requests" below).
+**CMP-13.** The agent chosen in [[Settings]] runs in the project folder, with no chat: Claude Code by default, or an ACP agent (see [[Agents]]). It uses the permission mode, allowed commands, model and effort from [[Settings]]. When Claude needs something the settings don't allow, it asks the engineer with a permission card (see "Permission requests" below).
 
 **CMP-14.** Claude's tool calls stream into the report's activity log while it runs.
 
