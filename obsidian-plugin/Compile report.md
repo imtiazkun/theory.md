@@ -91,9 +91,29 @@ A suggestion is ideation for the engineer. It is never model text. Why: the word
 
 **REP-31.** When a repository fails, its section shows "Couldn't create the pull request: {reason}" and keeps its fields, so Create can be tried again. Pull requests already created stay.
 
-**REP-32.** Once pull requests exist, the report lists each one with its repository, link and state: draft, open, merged or closed. The state refreshes when the report opens. Create PR is then hidden for those repositories.
+**REP-32.** Once pull requests exist, the report lists each one with its repository, link and state: draft, open, merged or closed. The state refreshes as REP-34 says. Create PR is then hidden for those repositories.
 
 **REP-33.** Text on the Create PR page goes only to GitHub. It is never written into the vault. Closing the page discards unsent text.
+
+## Pull request states
+
+**REP-34.** The plugin asks GitHub for pull request states at these moments, and only then:
+- when a report opens, or the report view switches to another report
+- when the compile history opens
+- when the compile history's Refresh action is clicked (UI-21)
+- when the Obsidian window gets focus back
+
+Why focus: the engineer merges a pull request in the browser, then comes back to Obsidian, and the state must be right by then.
+
+**REP-35.** A refresh checks only pull requests whose saved state is draft or open, across every report. Merged and closed pull requests are never checked again. Why: those states never change, and each check is a call to GitHub.
+
+**REP-36.** The plugin never checks on a timer. Why: polling would call `gh` all day while nobody looks.
+
+**REP-37.** One refresh runs at a time, and it checks its pull requests side by side, not one after another. A focus refresh is skipped when the last refresh finished less than 30 seconds ago. The Refresh action is never skipped. Why: switching windows quickly must not start a flood of calls.
+
+**REP-38.** A state that changed is saved in its report and redrawn at once in every view that shows it: the report, the compile history and the Repositories page.
+
+**REP-39.** When a check fails, for example offline or with `gh` logged out, the pull request keeps its last saved state. The failure is shown nowhere. Why: a stale state is better than an error the engineer can't act on from here.
 
 ## Where reports live
 

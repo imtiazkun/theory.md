@@ -15,4 +15,5 @@
 - [[Workspace]]: what the plugin adds to Obsidian's window.
 - [[Settings]]: every setting and its default.
 - [[Repositories]]: the model's layout, the Repositories page and adding a repository.
+- [[Expand]] (EXP): which notes a repository's model is missing, suggested by Claude.
 - [[Team sync]]: the shared server. Not built yet.

@@ -8,6 +8,8 @@ Everything theory.md adds to Obsidian's window that other notes don't cover.
 
 **UI-2.** A floating bar at the bottom right of the editor holds a commit button and a compile button. Settings can hide it.
 
+**UI-20.** When the active note is a model folder's `index.md`, the bar also shows an Expand button beside the commit button (see [[Expand]]).
+
 **UI-13.** While the bar shows, Obsidian's status bar moves to the bottom left of the editor. When the bar hides or the plugin turns off, the status bar goes back. Why: the bar and the status bar must never cover each other.
 
 **UI-3.** The compile button's state, checked in this order:
@@ -58,4 +60,6 @@ Everything theory.md adds to Obsidian's window that other notes don't cover.
 
 **UI-16.** Beside commit history in the right sidebar should show list of compiles along with when, by who and total amount of token spent in that compile. 
 
-**UI-18.** Each compile in that list shows the state of its pull requests: none, draft, open, merged or closed. With several repositories, it shows each one.
+**UI-18.** Each compile in that list shows the state of its pull requests: none, draft, open, merged or closed. With several repositories, it shows each one. The states refresh as REP-34 in [[Compile report]] says.
+
+**UI-21.** The compile history has a Refresh action. It refreshes the pull request states at once (REP-34).

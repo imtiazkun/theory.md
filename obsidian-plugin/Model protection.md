@@ -32,7 +32,7 @@ This check must not fail the compile on its own. Why: the engineer may be editin
 
 **INV-9.** Every revision must have a human author. The author's name and email come from [[Settings]], else from the git config. A commit without an author must fail.
 
-**INV-11.** The plugin must never put Claude's text into a note: not from a compile, not from a suggestion. A suggestion reaches the model only when the engineer writes it into the note themselves. Why: a human signature must mean a human wrote the words.
+**INV-11.** The plugin must never put Claude's text into a note: not from a compile, not from a suggestion, not from Expand. A suggestion reaches the model only when the engineer writes it into the note themselves. Why: a human signature must mean a human wrote the words.
 
 ## Link from code to model
 
