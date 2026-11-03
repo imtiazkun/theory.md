@@ -1,5 +1,5 @@
 ## What it is
-Theory.md is a collaboration tool for teams of engineers to build software in an AI-assisted workflow. It runs inside obsidian as a desktop plugin. It requires git and claude code cli to function. It will be used by one engineer, one vault for one project (multiple repository) 
+Theory.md is a collaboration tool for teams of engineers to build software in an AI-assisted workflow. It runs inside obsidian as a desktop plugin. It requires git and claude code cli to function. Today it is used by one engineer, with one vault for one project (one or more repositories). With theory-server, a team shares one vault.
 
 ## Why it exists
 
@@ -35,3 +35,4 @@ INV-1 applies only to compiling this model into theory.md's own code. It is not 
 Each repository in the project folder has a folder of the same name here, with its own index and instructions.
 
 - [[obsidian-plugin/index|obsidian-plugin]]: the Obsidian plugin.
+- [[theory-server/index|theory-server]]: the server that lets a team share a vault.
