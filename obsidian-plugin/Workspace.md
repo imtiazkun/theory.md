@@ -52,6 +52,8 @@ Everything theory.md adds to Obsidian's window that other notes don't cover.
 
 **UI-12.** Hidden folders are still committed and must not be sent to Claude.
 
+**UI-22.** Hidden notes, whose name starts with `_`, are still committed and must not be sent to Claude. They are not greyed out or moved in the file explorer. Why: the welcome note must be easy to find, yet it is not theory.
+
 ## Index and instructions files
 
 **UI-19.** In the file explorer, `index.md` and `instructions.md` at the vault root and directly inside a model folder are shown in bold, with an icon to the left of the name: a house for index, a scroll for instructions. Names match ignoring case. Why: they are the entry point and the rules of each part of the model, and must be found at a glance.

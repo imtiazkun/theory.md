@@ -13,7 +13,8 @@ The writing rules in [the root Instructions](../Instructions.md) apply here. Rul
 - changed files and commits: one note, all files, with `.obsidian/` ignored and with it tracked
 - anchors: kept when the file, heading and quote are in the snapshot, dropped otherwise
 - Always allow: which rules a request saves (CFG-16)
-- the snapshot: hidden folders, `.obsidian/` and the root Instructions are left out
+- the snapshot: hidden folders, hidden notes, `.obsidian/` and the root Instructions are left out
+- the welcome note: written and renamed to `_welcome.md` when `Welcome.md` exists, not written when it doesn't, left alone when `_welcome.md` exists, and never counted as a missing starter file (SET-16 to SET-18)
 - the index and instructions highlight: exactly the right paths match
 - missing starter files: which ones count as missing, that existing files are never changed, and that only the files written are committed (SET-15, CFG-20 to CFG-22)
 - pull request states: only draft and open ones are checked, a failed check keeps the saved state, and a focus refresh within 30 seconds is skipped (REP-35, REP-37, REP-39)

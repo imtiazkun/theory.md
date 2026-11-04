@@ -60,6 +60,10 @@ A note is realized unless its front matter says `realized: false`. An unrealized
 
 A hidden folder is a folder whose name starts with `_`, like `_templates`. Hidden folders are greyed out and listed last in the file explorer. They are still part of the vault's git history but must never be sent to claude.
 
+## Hidden note
+
+A hidden note is a note whose name starts with `_`, like `_welcome.md`, in any folder. It is shown like any other note in the file explorer. It is still part of the vault's git history but must never be sent to claude. Why: a note for people, like the welcome note, is not theory.
+
 ## Templates
 
 The templates are the notes in `_templates/` at the vault root. A new model folder's `index.md` starts as a copy of `_templates/index.md`, and its `instructions.md` as a copy of `_templates/instructions.md`. Engineers edit the templates like any note.
