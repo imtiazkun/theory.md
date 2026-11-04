@@ -46,7 +46,13 @@
           "text": "This was a test session"
         }
       ],
-      "resolved": null
+      "resolved": {
+        "by": {
+          "name": "imtiazkun",
+          "email": "alshahriar.me@gmail.com"
+        },
+        "at": "2026-11-04T03:50:40.646Z"
+      }
     }
   ]
 }
