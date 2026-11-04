@@ -16,9 +16,21 @@ Compile may run an agent other than Claude Code. Why: the engineer picks the age
 
 **AGT-5.** With "ACP agent" chosen, an Agent command field appears. It holds the command that starts the agent, with its arguments, like `gemini --experimental-acp`. It is empty by default. Compile can't start while it is empty: "Compile failed: Set the agent command in theory.md settings first." The marker doesn't move.
 
-**AGT-6.** Model and effort (CFG-17, CFG-18) reach an ACP agent only when the agent offers a matching model or thinking-level choice. Otherwise the agent uses its default, and the activity log says so. Why: ACP has no fixed model names.
+**AGT-6.** With "ACP agent" chosen, Model and Effort (CFG-17, CFG-18) are replaced by two text fields: "Agent model" and "Agent thinking level". Both are empty by default. Empty means the agent's default. Why: ACP agents name their own models, and the plugin can't know the list without starting the agent.
+
+**AGT-23.** At compile, each field is matched against the choices the agent offers, by value or by name. The activity log names the choice picked, or says the agent had no match and uses its default.
+
+**AGT-24.** The agent fields are stored apart from Claude Code's model and effort. Why: switching agents must never lose either.
+
+**AGT-25.** Settings must never start the agent, not even to read its model list. Why: opening settings must not start programs, ask for a sign-in or cost anything.
 
 **AGT-7.** Permission mode and Allowed commands (CFG-9 to CFG-11) apply to Claude Code only. An ACP agent decides by itself what to ask about.
+
+**AGT-26.** With "ACP agent" chosen, Permission mode and Allowed commands are hidden. Why: they don't change an ACP compile, and a setting that does nothing misleads.
+
+**AGT-27.** With "ACP agent" chosen, the Claude Code command (CFG-8) stays, and its description says "Used for Expand, commit messages and pull request bodies." Why: those still run Claude Code (AGT-2).
+
+**AGT-28.** The Compile section of the settings names the chosen agent: Claude Code, or the ACP agent. It never says Claude Code while an ACP agent is chosen.
 
 ## What the agent receives
 
