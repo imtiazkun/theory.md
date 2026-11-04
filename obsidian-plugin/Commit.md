@@ -23,6 +23,8 @@ A commit is how an engineer signs a revision of the model. Why: every line of th
 
 **CMT-7.** The message box defaults to "Update {NOTE NAME}" for one note, and "Update model" for all files. There should be a generate icon button represented by a sparkle. Clicking it should prompt claude to generate the message content. Sparkle should have a color fade in and out animation.
 
+**CMT-15.** While Claude writes, the sparkle blinks: it fades out and back in about once a second. It never spins, and no bar or line shows above the box or the button. This holds for every sparkle that asks Claude to write, pull request bodies (REP-28) included. Why: a blink says "working" without moving, and a spinning sparkle with a bar above it looks broken.
+
 **CMT-8** When other files also changed, the toggle "Include all changed files" appears, saying how many other files have changes. It is off by default. Why: one intent per commit.
 
 **CMT-9.** The modal shows who signs: "Signed as Name {EMAIL}", or "Signed with your git identity" when no name is set.
