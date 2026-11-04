@@ -4,11 +4,11 @@ These are the only settings. They live in the plugin's data, never in the vault.
 
 CFG-1 to CFG-3 are retired. Older versions took a full name and email here.
 
-**CFG-34.** The Author section shows the name and email git signs the vault's commits with: the vault's own git config, else the global one. They can't be edited here. Why: one identity must sign every revision, whether theory.md or git in a terminal makes it.
+**CFG-34.** The Author section shows the name and email git signs the vault's commits with: the vault's own git config, else the global one. They are shown as plain text, with no field to edit them. Why: one identity must sign every revision, whether theory.md or git in a terminal makes it.
 
 **CFG-35.** When git isn't installed, or theory.md can't find it, the section says "theory.md needs git, and can't find it. Install git from git-scm.com, then reopen Obsidian." Setup, Commit, Compile and comments can't run without git.
 
-**CFG-36.** When git has no name or no email, the section names what is missing and shows the commands that set it, with a copy button: `git config --global user.name "Your Name"` and `git config --global user.email "you@example.com"`. A Check again button reads git again. Why: theory.md must not guess who the engineer is.
+**CFG-36.** When git has no name or no email, the section still shows the one git has, as plain text. For each one missing, it says so and shows the command that sets it, with a copy button: `git config --global user.name "Your Name"` or `git config --global user.email "you@example.com"`. A Check again button reads git again. Why: theory.md must not guess who the engineer is.
 
 **CFG-37.** A name and email saved by an older version are no longer used. When git lacks a name or email and older saved data has them, the section offers "Use {name} <{email}> for this vault". It writes them into the vault's own git config, never the global one. Why: upgrading must never lose an engineer's settings, and theory.md must not change git for other repositories.
 
@@ -80,9 +80,9 @@ The card must show every rule before the engineer clicks Always allow. Why: the 
 
 **CFG-28.** When the vault has no `origin`, the section says "This vault has no remote, so its notes are never pulled. Add one below." Why: the engineer must know why nothing pulls, and how to fix it.
 
-**CFG-29.** Remote is the first setting in the Pull section. It is a text field with the URL of the vault's `origin`, like `git@github.com:team/model.git` or `https://github.com/team/model.git`, and a Save button beside it. The field shows the current URL, or is empty when there is no `origin`.
+**CFG-29.** Remote is the first setting in the Pull section. When the vault has an `origin`, it shows the URL as plain text, with no field and no Save button, and says "To change it, run `git remote set-url origin <url>` in the vault." When the vault has no `origin`, it is an empty text field for a URL, like `git@github.com:team/model.git` or `https://github.com/team/model.git`, with a Save button beside it.
 
-**CFG-30.** Save adds `origin` when the vault has none. When the vault already has a different `origin`, Save first asks "Replace the remote {old URL} with {new URL}? Pulls will come from the new remote." and changes nothing without a yes. Why: replacing a shared vault's remote by mistake would quietly pull someone else's model.
+**CFG-30.** Save only adds `origin`. It never replaces or removes one. Why: the whole team pulls through the remote, so changing it must be a deliberate step in git, never a settings tweak that could quietly pull someone else's model.
 
 **CFG-31.** After the remote is saved, the notice "Remote saved. Pulling…" appears and a pull runs at once (PULL-11). Save never pushes and never touches the code repositories. Why: the engineer sees at once whether the remote works.
 
