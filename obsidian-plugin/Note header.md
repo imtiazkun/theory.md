@@ -1,4 +1,4 @@
-Each note's header carries a commit button (see [[Commit]]), a realized box and a compile state icon.
+Each note's header carries the rule count, a commit button (see [[Commit]]), a realized box and a compile state icon.
 
 ## Realized box
 
@@ -25,3 +25,15 @@ Why the box exists: writing ahead is allowed. A note may describe something not 
 **HDR-7.** A report names a note when the note is among its changed notes or its anchors.
 
 **HDR-8.** Clicking the icon opens the compile report.
+
+## Rule count
+
+**HDR-9.** The header shows how many rules the open note declares, as "12 rules", left of the other header icons. A note with one rule shows "1 rule". A note without rules shows nothing. Why: the engineer must see at a glance how much a note claims.
+
+**HDR-10.** A rule is a paragraph or list item that starts with a bold ID: capital letters, a dash and a number, with or without a period, like `**PULL-6.**` or `**CMT-8**`. Text in code blocks and in front matter never counts.
+
+**HDR-11.** The count is worked out from the note's text as it is now, uncommitted edits included, and updates as the engineer types. It is never stored.
+
+**HDR-12.** The count's tooltip lists each prefix with its count and its lowest and highest number: "PULL: 22 rules, PULL-1 to PULL-22".
+
+**HDR-13.** When the note declares one ID more than once, the count shows in the warning colour, and the tooltip adds "PULL-6 is declared twice." Why: a reused ID makes failure pointers point at the wrong rule (see [the root Instructions](../Instructions.md)).
