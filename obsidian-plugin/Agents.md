@@ -46,7 +46,7 @@ Compile may run an agent other than Claude Code. Why: the engineer picks the age
 
 ## Model protection
 
-**AGT-17.** An ACP agent has no deny rules like INV-4. Its own shell can write anywhere the engineer can. The snapshot check (INV-5) and the vault check (INV-6) are therefore the protection that holds for every agent. They must run after every compile, whatever the agent.
+**AGT-17.** An ACP agent has no deny rules like INV-4. Its own shell can write anywhere the engineer can. The snapshot check (INV-5) and the vault check (INV-6) are therefore the protection that holds for every agent. When they run is INV-12 in [[Model protection]].
 
 ## Running and stopping
 
@@ -55,3 +55,5 @@ Compile may run an agent other than Claude Code. Why: the engineer picks the age
 **AGT-19.** When the agent command isn't found, the report fails with "Couldn't find the agent ("{command}"). Set its command in theory.md settings." The marker doesn't move. Why: same as CMP-19.
 
 **AGT-20.** The report has no token count for an ACP agent. Why: ACP reports how full the context is, not the tokens used.
+
+**AGT-22.** For an ACP agent, the report says "The agent couldn't be started." instead of CMP-19's text. Without a structured answer, it says "The agent gave no structured answer. It stopped because: {reason}." followed by the end of the agent's error output. It never shows the exit code. Why: the plugin stops the agent itself, so the code means nothing.

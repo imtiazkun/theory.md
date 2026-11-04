@@ -20,6 +20,10 @@ These rules must hold in every compile. Why: the model is the source of truth on
 
 This check must not fail the compile on its own. Why: the engineer may be editing notes while a compile runs.
 
+## When the checks run
+
+**INV-12.** The snapshot check (INV-5) and the vault check (INV-6) run after every compile in which an agent started, cancelled ones included, whatever the agent. They never change a cancelled compile's status and never move the marker. Why: a cancelled agent may already have written somewhere.
+
 ## Snapshot cleanup
 
 **INV-7.** Compile must always delete the snapshot when it ends, whatever the outcome.
