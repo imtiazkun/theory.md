@@ -19,4 +19,5 @@
 - [[Agents]] (AGT): which agent compiles, and how an ACP agent runs.
 - [[Pull]] (PULL): pulling new revisions and code by itself, fast-forward only.
 - [[Comments]] (CMNT): comments on a note that the AI ignores.
+- [[Release]] (REL): how a version is chosen and published.
 - [[Team sync]]: the shared server. Not built yet.
