@@ -2,7 +2,7 @@
 
 The model is the set of Markdown notes and assets in the vault. It says what the software does, why, and sometimes how. Only humans write it. The AI may read it and must never change it.
 
-Obsidian's config folder `.obsidian/` is not part of the model. Git ignores it, so it is never counted as a change, never committed and never sent to Claude.
+Obsidian's config folder `.obsidian/` is not part of the model. Git ignores it, so it is never counted as a change, never committed and never sent to Claude. It is a dot folder.
 
 ## Vault
 
@@ -38,7 +38,7 @@ A compile branch is a branch named `theory/compile-{revision}` in a code reposit
 
 ## Pending revisions
 
-Pending revisions are the revisions committed after the marker. When there is no marker, every revision is pending.
+Pending revisions are the revisions committed after the marker. When there is no marker, every revision is pending. A revision that changes only files in dot folders, like a comment, is never pending. Why: it changes no theory, so there is nothing to compile.
 
 ## Snapshot
 
@@ -63,6 +63,16 @@ A hidden folder is a folder whose name starts with `_`, like `_templates`. Hidde
 ## Hidden note
 
 A hidden note is a note whose name starts with `_`, like `_welcome.md`, in any folder. It is shown like any other note in the file explorer. It is still part of the vault's git history but must never be sent to claude. Why: a note for people, like the welcome note, is not theory.
+
+## Dot folder
+
+A dot folder is a folder whose name starts with `.`, like `.obsidian/` or `.comments/`, anywhere in the vault. Dot folders hold files for theory.md's own workings, like comments, or for external services, like Obsidian's config. They are never theory.
+- Their files are never sent to any agent (INV-13).
+- Obsidian never shows them in the file explorer.
+- Their changes never count as changes to the model: not in the commit button, the commit modal, the compile button or the note header.
+- theory.md commits the dot folders it owns by itself, like `.comments/` (CMNT-13). Others, like `.obsidian/`, git ignores.
+
+Why: the model must hold theory only, while theory.md still needs somewhere in the vault to keep what the team shares.
 
 ## Templates
 

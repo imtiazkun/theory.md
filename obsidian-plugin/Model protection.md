@@ -20,6 +20,8 @@ These rules must hold in every compile. Why: the model is the source of truth on
 
 This check must not fail the compile on its own. Why: the engineer may be editing notes while a compile runs.
 
+Files in dot folders are left out of this check. Why: an engineer may comment while a compile runs.
+
 ## When the checks run
 
 **INV-12.** The snapshot check (INV-5) and the vault check (INV-6) run after every compile in which an agent started, cancelled ones included, whatever the agent. They never change a cancelled compile's status and never move the marker. Why: a cancelled agent may already have written somewhere.
@@ -31,6 +33,10 @@ This check must not fail the compile on its own. Why: the engineer may be editin
 ## Reports stay outside
 
 **INV-8.** Compile reports must never be written into the vault. They live in the plugin's data file, which git ignores. Why: anything in the vault becomes part of the model.
+
+## Dot folders stay out
+
+**INV-13.** Files in dot folders must never be sent to any agent. They are left out of the snapshot, the compile diff, Expand, commit messages and pull request bodies. Why: comments and theory.md's own files are not theory, and anything an agent reads can become code.
 
 ## Signed revisions
 
