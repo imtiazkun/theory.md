@@ -22,7 +22,7 @@ The writing rules in [the root Instructions](../Instructions.md) apply here. Rul
 - the templates for `index.md` and `instructions.md`: placeholders filled, lines of empty fields left out, and the built-in text when a template is missing or empty (REPO-19 to REPO-22)
 - the login PATH: used when the shell answers, the fallback when the shell fails or takes over 5 seconds, and the extra folders added after it (CMP-44 to CMP-47)
 - ACP agents: model writes denied without a card, other requests reaching a card, the answer read from the last JSON block, and a missing agent command (AGT-10 to AGT-15, AGT-19)
-- pull: a fast-forward only when it's safe, waiting revisions, a needed sync, a compile branch left alone, no pull during a compile, and each way the pull before a compile can stop it or carry on offline (PULL-1 to PULL-17)
+- pull: a fast-forward only when it's safe, waiting revisions, a needed sync, a compile branch left alone, no pull during a compile, each way the pull before a compile can stop it or carry on offline (PULL-1 to PULL-17), the sync status and menu lines (PULL-9, PULL-19 to PULL-21), and saving the remote: added, replaced, refused (CFG-30 to CFG-32)
 
 **TEST-5.** Tests that need git must use real git repositories in a new temporary folder, and delete it afterwards. They must never touch the vault, the project folder or the engineer's own repositories. Why: a test must never be able to damage real work.
 

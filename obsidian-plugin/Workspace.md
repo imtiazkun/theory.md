@@ -6,7 +6,7 @@ Everything theory.md adds to Obsidian's window that other notes don't cover.
 
 ## Compile bar
 
-**UI-2.** A floating bar at the bottom right of the editor holds a commit button and a compile button. When the vault has an `origin`, it also holds the sync status to their left (PULL-9 in [[Pull]]). Settings can hide it.
+**UI-2.** A floating bar at the bottom right of the editor holds the sync status, a commit button and a compile button, in that order (PULL-9 in [[Pull]]). The sync status shows even when the vault has no `origin`. Settings can hide the bar.
 
 **UI-20.** When the active note is a model folder's `index.md`, the bar also shows an Expand button beside the commit button (see [[Expand]]).
 

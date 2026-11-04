@@ -1,4 +1,4 @@
-These are the only settings. They live in the plugin's data, never in the vault.
+These are the only settings. They live in the plugin's data, never in the vault. Remote (CFG-29) is the one exception: it lives in the vault's git config, because that is where git reads it.
 
 ## Author
 
@@ -74,7 +74,20 @@ The card must show every rule before the engineer clicks Always allow. Why: the 
 
 **CFG-27.** Also pull code repositories is on by default (PULL-12).
 
-**CFG-28.** When the vault has no `origin`, the section says "This vault has no remote, so its notes are never pulled." Why: the engineer must know why the sync status is missing.
+**CFG-28.** When the vault has no `origin`, the section says "This vault has no remote, so its notes are never pulled. Add one below." Why: the engineer must know why nothing pulls, and how to fix it.
+
+**CFG-29.** Remote is the first setting in the Pull section. It is a text field with the URL of the vault's `origin`, like `git@github.com:team/model.git` or `https://github.com/team/model.git`, and a Save button beside it. The field shows the current URL, or is empty when there is no `origin`.
+
+**CFG-30.** Save adds `origin` when the vault has none. When the vault already has a different `origin`, Save first asks "Replace the remote {old URL} with {new URL}? Pulls will come from the new remote." and changes nothing without a yes. Why: replacing a shared vault's remote by mistake would quietly pull someone else's model.
+
+**CFG-31.** After the remote is saved, the notice "Remote saved. Pulling…" appears and a pull runs at once (PULL-11). Save never pushes and never touches the code repositories. Why: the engineer sees at once whether the remote works.
+
+**CFG-32.** Save is refused, and nothing changes, when:
+- The field is empty or has spaces: "Enter the remote's URL." Clearing the field never removes the remote. Why: removing the remote by mistake would silently stop every pull.
+- The URL has a password or token in it, like `https://ana:token@github.com/…`: "Don't put a password or token in the remote. Git asks your credential helper instead." Why: git config is plain text and gets copied around (SYNC-8).
+- Git refuses it: "Couldn't save the remote: {git's message}".
+
+**CFG-33.** When the vault isn't set up, Remote can't be edited, and says "Set up the vault first."
 
 ## Show compile button
 

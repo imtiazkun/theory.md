@@ -14,7 +14,7 @@ The plugin keeps the vault and the code up to date with their git remotes by its
 
 **PULL-5.** The vault pulls `main` from its `origin` when Obsidian opens, when the Obsidian window gets focus, and on the timer set in [[Settings]] (CFG-26). A focus pull is skipped when the last pull was under 30 seconds ago. Why: switching windows often must not fetch every time.
 
-**PULL-6.** A vault without an `origin` never pulls, and the sync status (PULL-9) is hidden. Why: one engineer on their own must not need a remote.
+**PULL-6.** A vault without an `origin` never pulls. The sync status (PULL-9) says "No remote". Why: one engineer on their own must not need a remote, but must see that the vault isn't shared, and where to add one (CFG-29).
 
 ## What a vault pull does
 
@@ -30,6 +30,8 @@ The plugin keeps the vault and the code up to date with their git remotes by its
 ## Sync status
 
 **PULL-9.** The floating bar (UI-2) shows the sync status to the left of the commit button. It has these states:
+- "No remote" when the vault has no `origin`.
+- "Not pulled yet" before the first pull since Obsidian opened, for example when automatic pulls are off.
 - "Pulling…" while a pull runs.
 - "Synced {time} ago" when the vault has every revision on the remote. When the vault also has revisions the remote doesn't, it adds " · {n} not pushed".
 - "{n} waiting" when PULL-7 held revisions back. Its tooltip names the files with uncommitted changes.
@@ -38,9 +40,25 @@ The plugin keeps the vault and the code up to date with their git remotes by its
 
 **PULL-10.** The sync status never says "Up to date". Why: the compile button already uses those words for "nothing to compile".
 
-**PULL-11.** Clicking the sync status, or the command "Pull now", pulls at once. Pull now works even when automatic pulls are off.
+**PULL-11.** The command "Pull now", and Pull now in the sync menu (PULL-19), pull at once. Pull now works even when automatic pulls are off.
 
-When [[Team sync]] is built, clicking "Sync needed" will run Sync (SYNC-9).
+When [[Team sync]] is built, the sync menu will offer Sync when a sync is needed (SYNC-9).
+
+## Sync menu
+
+**PULL-19.** Clicking the sync status opens the sync menu. From top to bottom:
+- When the remote was last checked: "Checked the remote 2 min ago". Before any fetch has worked: "Not checked yet".
+- The last pull that brought revisions: "Last pulled 3 revisions 1 h ago". When none has: "Nothing pulled since Obsidian opened".
+- Pull now.
+- Pull settings…, which opens the settings.
+
+The first two lines are information and can't be clicked. Why: the engineer must see how fresh the vault is without guessing from one label.
+
+**PULL-20.** With no remote, the menu says "This vault has no remote." and offers "Add a remote…", which opens the settings at Remote (CFG-29). It offers no Pull now. Code repositories still pull on the timer (PULL-12).
+
+**PULL-21.** While a pull runs, Pull now says "Pulling…" and can't be clicked.
+
+**PULL-22.** The times in the menu are kept only while Obsidian runs. They are never stored. Why: state lives only in git, front matter and plugin data, and these times are worth nothing after a restart.
 
 ## Code repositories
 
