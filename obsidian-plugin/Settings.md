@@ -66,6 +66,16 @@ Why: the engineer decides how much thinking turning the theory into code deserve
 
 The card must show every rule before the engineer clicks Always allow. Why: the engineer must see how much one click allows.
 
+## Pull
+
+**CFG-25.** Pull automatically is on by default. Off stops the pulls on launch, on focus and on the timer (PULL-5). Pull now and the pull before a compile still run (PULL-11, PULL-15).
+
+**CFG-26.** Check every is a dropdown: 1, 5, 15 or 30 minutes. The default is 5 minutes.
+
+**CFG-27.** Also pull code repositories is on by default (PULL-12).
+
+**CFG-28.** When the vault has no `origin`, the section says "This vault has no remote, so its notes are never pulled." Why: the engineer must know why the sync status is missing.
+
 ## Show compile button
 
 **CFG-13.** Shows or hides the floating bar. On by default.

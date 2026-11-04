@@ -16,6 +16,8 @@ The lock lives inside the app. Why: theory.md is single-user for now. [[Team syn
 
 These checks run in this order. When one fails, the compile doesn't start and the marker doesn't move.
 
+**CMP-48.** Before CMP-4, Compile pulls the vault and the code repositories, as PULL-15 to PULL-17 in [[Pull]] say.
+
 **CMP-4.** The vault must be set up. Otherwise: "Set up the vault before compiling."
 
 **CMP-5.** Uncommitted files are left out, with the notice "N uncommitted files aren't part of this compile." (singular: "1 uncommitted file isn't part of this compile."). This warning doesn't stop the compile.

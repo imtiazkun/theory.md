@@ -17,4 +17,5 @@
 - [[Repositories]]: the model's layout, the Repositories page and adding a repository.
 - [[Expand]] (EXP): which notes a repository's model is missing, suggested by Claude.
 - [[Agents]] (AGT): which agent compiles, and how an ACP agent runs.
+- [[Pull]] (PULL): pulling new revisions and code by itself, fast-forward only.
 - [[Team sync]]: the shared server. Not built yet.

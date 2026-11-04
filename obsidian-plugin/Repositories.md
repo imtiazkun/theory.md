@@ -36,6 +36,8 @@ The model mirrors the project folder: one folder of notes per repository. Why: e
 
 **REPO-12.** Opening the page never fetches. The page's Refresh action runs `git fetch` in every repository first, then recomputes. Why: opening the page must be fast and work offline.
 
+**REPO-24.** A card whose repository could fast-forward (PULL-13 in [[Pull]]) shows a Pull button. It fast-forwards that repository only.
+
 **REPO-13.** A repository without a model folder shows "No model folder" and an Add model folder button. It creates the folder with `index.md` and `instructions.md`, each from its template (REPO-19), and commits only those two files as "Add model folder for {name}", signed by the author.
 
 ## New repository

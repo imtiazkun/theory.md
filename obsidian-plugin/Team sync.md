@@ -9,7 +9,7 @@ The server's side is in [[theory-server/index|theory-server]]. This note is the 
 
 **SYNC-4.** Settings get a Server section with three settings: Server URL, Token and Vault name. The token is shown as a password field. It is stored in the plugin's data file, which git ignores.
 
-**SYNC-5.** With no server URL set, the plugin must behave exactly as it does today. Why: one engineer on their own must not need a server.
+**SYNC-5.** With no server URL set, the plugin must behave exactly as it does today, [[Pull]] included. Why: one engineer on their own must not need a server.
 
 **SYNC-6.** A Connect button checks the token with the server (API-5, `GET /me`). The member's email must match the author email in settings. Otherwise: "This token belongs to <member email>, but your settings say <author email>." Why: the server rejects commits whose author isn't the pusher (GIT-4).
 

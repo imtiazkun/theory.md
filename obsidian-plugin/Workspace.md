@@ -6,7 +6,7 @@ Everything theory.md adds to Obsidian's window that other notes don't cover.
 
 ## Compile bar
 
-**UI-2.** A floating bar at the bottom right of the editor holds a commit button and a compile button. Settings can hide it.
+**UI-2.** A floating bar at the bottom right of the editor holds a commit button and a compile button. When the vault has an `origin`, it also holds the sync status to their left (PULL-9 in [[Pull]]). Settings can hide it.
 
 **UI-20.** When the active note is a model folder's `index.md`, the bar also shows an Expand button beside the commit button (see [[Expand]]).
 
@@ -44,7 +44,7 @@ Everything theory.md adds to Obsidian's window that other notes don't cover.
 
 ## Commands
 
-**UI-10.** The commands are: Setup vault, Show commit history, Compile, Show compile report, Commit current note, Show repositories. There are no others.
+**UI-10.** The commands are: Setup vault, Show commit history, Compile, Show compile report, Commit current note, Show repositories, Pull now. There are no others.
 
 ## Hidden folders
 
