@@ -1,0 +1,25 @@
+{
+  "version": 1,
+  "note": "obsidian-plugin/Settings.md",
+  "threads": [
+    {
+      "id": "rw5sxk",
+      "anchor": {
+        "heading": "Author",
+        "quote": "**CFG-36.** When git has no name or no email, the section still shows the one git has, as plain text. For each one missing, it says so and shows the command that sets it, with a copy button: `git config --global user.name \"Your Name\"` or `git config --global user.email \"you@example.com\"`. A Check again button reads git again. Why: theory.md must not guess who the engineer is."
+      },
+      "comments": [
+        {
+          "id": "yxl26v",
+          "author": {
+            "name": "imtiazkun",
+            "email": "alshahriar.me@gmail.com"
+          },
+          "at": "2026-11-04T03:49:56.447Z",
+          "text": "I have questions"
+        }
+      ],
+      "resolved": null
+    }
+  ]
+}
