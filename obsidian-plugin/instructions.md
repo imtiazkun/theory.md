@@ -23,6 +23,7 @@ The writing rules in [the root Instructions](../Instructions.md) apply here. Rul
 - the login PATH: used when the shell answers, the fallback when the shell fails or takes over 5 seconds, and the extra folders added after it (CMP-44 to CMP-47)
 - ACP agents: model writes denied without a card, other requests reaching a card, the answer read from the last JSON block, and a missing agent command (AGT-10 to AGT-15, AGT-19)
 - pull: a fast-forward only when it's safe, waiting revisions, a needed sync, a compile branch left alone, no pull during a compile, each way the pull before a compile can stop it or carry on offline (PULL-1 to PULL-17), the sync status and menu lines (PULL-9, PULL-19 to PULL-21), and saving the remote: added, replaced, refused (CFG-30 to CFG-32)
+- comments: the file each note's comments go to (CMNT-9), reading and writing the file with its format kept (CMNT-10, CMNT-11), a broken file never overwritten (CMNT-12), only the comment file committed (CMNT-13), and the file moving with its note (CMNT-15)
 - dot folders: left out of the snapshot and the compile diff (INV-13), left out of the vault check (INV-6), and a revision that only changes them never pending
 - the git identity: read from the vault's config before the global one, missing git, a missing name or email, and an older saved author written only into the vault's config (CFG-34 to CFG-37)
 

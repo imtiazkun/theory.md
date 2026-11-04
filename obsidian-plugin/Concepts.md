@@ -74,6 +74,10 @@ A dot folder is a folder whose name starts with `.`, like `.obsidian/` or `.comm
 
 Why: the model must hold theory only, while theory.md still needs somewhere in the vault to keep what the team shares.
 
+## Comment
+
+A comment is text an engineer writes on part of a note, which the AI ignores. Comments live in `.comments/` dot folders. See [[Comments]].
+
 ## Templates
 
 The templates are the notes in `_templates/` at the vault root. A new model folder's `index.md` starts as a copy of `_templates/index.md`, and its `instructions.md` as a copy of `_templates/instructions.md`. Engineers edit the templates like any note.

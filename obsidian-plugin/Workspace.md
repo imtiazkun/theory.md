@@ -44,7 +44,7 @@ Everything theory.md adds to Obsidian's window that other notes don't cover.
 
 ## Commands
 
-**UI-10.** The commands are: Setup vault, Show commit history, Compile, Show compile report, Commit current note, Show repositories, Pull now. There are no others.
+**UI-10.** The commands are: Setup vault, Show commit history, Compile, Show compile report, Commit current note, Show repositories, Pull now, Comment on selection, Show comments. There are no others.
 
 ## Hidden folders
 
@@ -65,3 +65,7 @@ Everything theory.md adds to Obsidian's window that other notes don't cover.
 **UI-18.** Each compile in that list shows the state of its pull requests: none, draft, open, merged or closed. With several repositories, it shows each one. The states refresh as REP-34 in [[Compile report]] says.
 
 **UI-21.** The compile history has a Refresh action. It refreshes the pull request states at once (REP-34).
+
+## Comments
+
+**UI-23.** The right sidebar has a Comments view beside commit history and compile history. It shows the active note's comments (see [[Comments]]).
