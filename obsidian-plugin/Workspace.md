@@ -58,6 +58,27 @@ Everything theory.md adds to Obsidian's window that other notes don't cover.
 
 **UI-19.** In the file explorer, `index.md` and `instructions.md` at the vault root and directly inside a model folder are shown in bold, with an icon to the left of the name: a house for index, a scroll for instructions. Names match ignoring case. Why: they are the entry point and the rules of each part of the model, and must be found at a glance.
 
+## Change dots
+
+**UI-24.** In the file explorer, a coloured dot to the right of a file's name shows where the file stands:
+- An orange dot: the file has uncommitted changes, or git doesn't track it yet. Tooltip: "Uncommitted changes".
+- An accent-coloured dot: the file is committed and changed since the last compile marker, or there is no marker yet (HDR-6). Tooltip: "Committed, waiting for a compile".
+- No dot: the file is committed and compiled.
+
+Why: the engineer must see at a glance what is unsigned and what the code doesn't follow yet, without opening every note.
+
+**UI-25.** A file with both shows only the orange dot. Its tooltip says "Uncommitted changes. Earlier changes are waiting for a compile." Why: committing comes first, so that is the step to show.
+
+**UI-26.** A folder shows a dot when any file inside it has one, at any depth, with orange winning over the accent colour. It shows whether the folder is open or collapsed. Why: a collapsed folder must not hide work.
+
+**UI-27.** Files that are never sent to Claude never show the accent-coloured dot: hidden notes, files in hidden folders and the root Instructions. They still show the orange dot. Why: they never wait for a compile, so the dot would never go away.
+
+**UI-28.** Dot folders and their files never show in the file explorer, so they never show a dot (see [[Concepts]]).
+
+**UI-29.** The dots are worked out from git each time, never stored. They refresh when a file changes, and after a commit, a compile, a pull and when Obsidian's window gets focus.
+
+**UI-30.** The dots are display only. They never write to a file and never change how the file explorer sorts.
+
 ## Compile History
 
 **UI-16.** Beside commit history in the right sidebar should show list of compiles along with when, by who and total amount of token spent in that compile. 

@@ -26,6 +26,7 @@ The writing rules in [the root Instructions](../Instructions.md) apply here. Rul
 - the rule count: what counts as a rule, code blocks and front matter left out, and duplicate IDs (HDR-10, HDR-13)
 - comments: the file each note's comments go to (CMNT-9), reading and writing the file with its format kept (CMNT-10, CMNT-11), a broken file never overwritten (CMNT-12), only the comment file committed (CMNT-13), and the file moving with its note (CMNT-15)
 - dot folders: left out of the snapshot and the compile diff (INV-13), left out of the vault check (INV-6), and a revision that only changes them never pending
+- the change dots: which files get which dot, orange winning over the accent colour, folders at any depth, and no accent-coloured dot for hidden notes, hidden folders and the root Instructions (UI-24 to UI-27)
 - the git identity: read from the vault's config before the global one, missing git, a missing name or email, and an older saved author written only into the vault's config (CFG-34 to CFG-37)
 
 **TEST-5.** Tests that need git must use real git repositories in a new temporary folder, and delete it afterwards. They must never touch the vault, the project folder or the engineer's own repositories. Why: a test must never be able to damage real work.
