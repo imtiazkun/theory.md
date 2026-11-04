@@ -11,7 +11,7 @@ The server's side is in [[theory-server/index|theory-server]]. This note is the 
 
 **SYNC-5.** With no server URL set, the plugin must behave exactly as it does today, [[Pull]] included. Why: one engineer on their own must not need a server.
 
-**SYNC-6.** A Connect button checks the token with the server (API-5, `GET /me`). The member's email must match the author email in settings. Otherwise: "This token belongs to <member email>, but your settings say <author email>." Why: the server rejects commits whose author isn't the pusher (GIT-4).
+**SYNC-6.** A Connect button checks the token with the server (API-5, `GET /me`). The member's email must match the email git uses (CFG-34). Otherwise: "This token belongs to <member email>, but git signs as <author email>." Why: the server rejects commits whose author isn't the pusher (GIT-4).
 
 **SYNC-7.** Connect sets the vault's remote `origin` to the vault's URL (GIT-2). When the vault already has a different `origin`, Connect asks before replacing it.
 

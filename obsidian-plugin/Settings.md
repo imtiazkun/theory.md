@@ -2,11 +2,15 @@ These are the only settings. They live in the plugin's data, never in the vault.
 
 ## Author
 
-**CFG-1.** Full name and email address sign the engineer's revisions. Both are empty by default.
+CFG-1 to CFG-3 are retired. Older versions took a full name and email here.
 
-**CFG-2.** An empty value falls back to the git config.
+**CFG-34.** The Author section shows the name and email git signs the vault's commits with: the vault's own git config, else the global one. They can't be edited here. Why: one identity must sign every revision, whether theory.md or git in a terminal makes it.
 
-**CFG-3.** An email that doesn't look like `name@domain.tld` shows "This doesn't look like a valid email address."
+**CFG-35.** When git isn't installed, or theory.md can't find it, the section says "theory.md needs git, and can't find it. Install git from git-scm.com, then reopen Obsidian." Setup, Commit, Compile and comments can't run without git.
+
+**CFG-36.** When git has no name or no email, the section names what is missing and shows the commands that set it, with a copy button: `git config --global user.name "Your Name"` and `git config --global user.email "you@example.com"`. A Check again button reads git again. Why: theory.md must not guess who the engineer is.
+
+**CFG-37.** A name and email saved by an older version are no longer used. When git lacks a name or email and older saved data has them, the section offers "Use {name} <{email}> for this vault". It writes them into the vault's own git config, never the global one. Why: upgrading must never lose an engineer's settings, and theory.md must not change git for other repositories.
 
 ## Vault
 

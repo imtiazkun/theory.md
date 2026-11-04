@@ -6,7 +6,7 @@ The people on a server are its members. Each member has a name, an email and one
 
 **AUTH-2.** An admin adds and removes members with commands on the server: `theory-server member add --name "<name>" --email <email>` and `theory-server member remove --email <email>`. There is no web page for this in version 1. Why: a small team doesn't need one. See [[admin-ui]].
 
-**AUTH-3.** A member's email must be unique on the server, ignoring case. It must be the same email the member sets as their author email in the plugin. Why: GIT-4 compares it with each commit's author email.
+**AUTH-3.** A member's email must be unique on the server, ignoring case. It must be the same email git signs the member's commits with in the plugin (CFG-34). Why: GIT-4 compares it with each commit's author email.
 
 **AUTH-4.** Removing a member revokes all their tokens at once. Their commits stay in every vault's history.
 

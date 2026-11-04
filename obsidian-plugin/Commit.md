@@ -27,14 +27,14 @@ A commit is how an engineer signs a revision of the model. Why: every line of th
 
 **CMT-8** When other files also changed, the toggle "Include all changed files" appears, saying how many other files have changes. It is off by default. Why: one intent per commit.
 
-**CMT-9.** The modal shows who signs: "Signed as Name {EMAIL}", or "Signed with your git identity" when no name is set.
+**CMT-9.** The modal shows who signs, as git reports it: "Signed as {name} <{email}>".
 
 **CMT-10.** Cmd/Ctrl+Enter submits. Cancel closes without committing.
 
 
 ## Author
 
-**CMT-11.** The author's name and email come from [[Settings]], else from the git config. When neither has a name: "Set your full name in theory.md settings first." When neither has an email: "Set your email address in theory.md settings first."
+**CMT-11.** The author's name and email are the ones git uses (CFG-34). When git has no name or email, nothing is committed and the notice says "Set your name and email in git first. theory.md settings show how." When git isn't installed: "theory.md needs git, and can't find it. Install git from git-scm.com, then reopen Obsidian."
 
 ## What gets committed
 

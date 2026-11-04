@@ -8,7 +8,7 @@ Setup vault turns an Obsidian vault into a model. Why: the model needs history a
 
 **SET-2.** A vault that already has a `.git` folder counts as set up. Setup then shows "This vault is already set up." and changes nothing. Why: an existing repository belongs to someone; setup must not rewrite it.
 
-**SET-3.** Setup needs an author name and email, from [[Settings]] or the git config. It checks this before touching anything, so a failure never leaves a half set-up vault.
+**SET-3.** Setup needs git, and the name and email git uses (CFG-34). It checks this before touching anything, so a failure never leaves a half set-up vault.
 
 **SET-4.** Any failure shows "Setup vault failed: <reason>".
 
