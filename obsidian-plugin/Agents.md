@@ -4,7 +4,7 @@ Compile may run an agent other than Claude Code. Why: the engineer picks the age
 
 **AGT-1.** Compile runs either Claude Code or an agent that speaks the Agent Client Protocol (ACP) over stdio. Examples: Gemini CLI, Codex, and Claude Code through its ACP adapter.
 
-**AGT-2.** Only Compile uses the chosen agent. Expand, commit messages and pull request bodies always use Claude Code. Why: they are one-shot text tasks, and moving them is a separate decision.
+**AGT-2.** Only Compile uses the chosen agent. Expand, commit messages and pull request bodies always use Claude Code. Why: they are one-shot text tasks, and moving them is a separate decision. 
 
 **AGT-3.** Claude Code is the default. Why: an upgrade must never change how an existing vault compiles.
 
