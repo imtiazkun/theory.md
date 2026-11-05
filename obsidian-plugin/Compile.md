@@ -140,6 +140,16 @@ Each compile is a branch. Why: code changes from the model reach the main line o
 
 **CMP-38.** A new compile branch is named `theory/compile-{revision}`, after the short hash of the latest revision being compiled. Every repository gets the same name. Its base is the branch that was checked out when the compile started. Why: the same name shows which branches in different repositories came from the same compile.
 
+**CMP-49.** When a compile starts on a compile branch that is no longer open (CMP-39), the base is that branch's own base, as its report recorded it, else `main`. Why: a finished compile branch is history, and new work must start from the main line.
+
+**CMP-50.** A new compile branch must start from the newest base. Before it is created, the base must not be behind its upstream. Why: Claude builds on what the branch holds, and an old base hides code the model already relies on.
+
+**CMP-51.** When the base is behind and has no commits of its own, the plugin fast-forwards it first, even when it isn't checked out. When it has commits of its own too, the compile doesn't start: "Compile failed: {base} in {repo} and origin/{base} both have new commits. Pull with rebase in git, then compile again."
+
+**CMP-52.** When a compile reuses an open compile branch (CMP-39) and its base has commits the branch lacks, the compile doesn't start: "Compile failed: {branch} in {repo} is missing commits from {base}. Merge {base} into it, then compile again." The plugin never merges by itself. Why: Claude must not build on old code, and a merge can conflict, which only a person may resolve.
+
+**CMP-53.** A repository without an upstream skips the remote part of CMP-50 and CMP-51. When the fetch before the compile failed (PULL-17), these checks use what the last fetch saw.
+
 **CMP-39.** A repository may have at most one open compile branch. A compile branch is open until it is merged into its base or its pull request is closed. When a repository already has an open compile branch, the compile checks it out and adds commits to it. It never starts a second one. Why: a new compile from the base would not see the earlier unmerged changes, and Claude would redo them or the two would conflict.
 
 **CMP-40.** After Claude finishes, whatever the outcome, a compile branch created by this compile that got no commits is deleted, and its repository goes back to its base. A repository whose compile branch has commits stays on that branch, so the engineer can try the result.

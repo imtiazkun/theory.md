@@ -75,7 +75,7 @@ The first two lines are information and can't be clicked. Why: the engineer must
 **PULL-16.** The compile doesn't start, and the marker doesn't move, when the pull before it ends in one of these:
 - A sync is needed: "Compile failed: The vault and its remote both have new commits. Pull with rebase in git, then compile again."
 - Revisions are waiting: "Compile failed: New revisions on the remote change notes you haven't committed: {files}. Commit or discard them, then compile again."
-- A repository that isn't on a compile branch is behind and can't fast-forward: "Compile failed: Pull these repositories first: {repos}."
+- A repository that isn't on a compile branch is behind and can't fast-forward: "Compile failed: Pull these repositories first: {repos}." A compile branch's base is checked by CMP-50 to CMP-52.
 
 Why: compiling a model the team has moved on from makes code nobody asked for.
 
