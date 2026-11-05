@@ -42,8 +42,6 @@ The plugin keeps the vault and the code up to date with their git remotes by its
 
 **PULL-11.** The command "Pull now", and Pull now in the sync menu (PULL-19), pull at once. Pull now works even when automatic pulls are off.
 
-When [[Team sync]] is built, the sync menu will offer Sync when a sync is needed (SYNC-9).
-
 ## Sync menu
 
 **PULL-19.** Clicking the sync status opens the sync menu. From top to bottom:

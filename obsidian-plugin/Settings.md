@@ -88,7 +88,7 @@ The card must show every rule before the engineer clicks Always allow. Why: the 
 
 **CFG-32.** Save is refused, and nothing changes, when:
 - The field is empty or has spaces: "Enter the remote's URL." Clearing the field never removes the remote. Why: removing the remote by mistake would silently stop every pull.
-- The URL has a password or token in it, like `https://ana:token@github.com/…`: "Don't put a password or token in the remote. Git asks your credential helper instead." Why: git config is plain text and gets copied around (SYNC-8).
+- The URL has a password or token in it, like `https://ana:token@github.com/…`: "Don't put a password or token in the remote. Git asks your credential helper instead." Why: git config is plain text and gets copied around.
 - Git refuses it: "Couldn't save the remote: {git's message}".
 
 **CFG-33.** When the vault isn't set up, Remote can't be edited, and says "Set up the vault first."

@@ -52,7 +52,7 @@ A comment is text an engineer writes on part of a note that the AI ignores. Why:
 
 **CMNT-11.** The file is written with two-space indents and a newline at the end. Why: a comment's diff must be readable in git.
 
-**CMNT-12.** A file the plugin can't read is never overwritten. The Comments view says "The comments on this note can't be read: {file}." Why: a broken file may still hold someone's words.
+**CMNT-12.** A file the plugin can't read is never overwritten. The Comments view says "The comments on {note} can't be read: {file}." Why: a broken file may still hold someone's words.
 
 ## Committing comments
 
@@ -70,21 +70,27 @@ Why: a comment must reach the team with the next pull, and must never ride along
 
 ## Comments view
 
-**CMNT-16.** The right sidebar has a Comments view beside commit history and compile history (UI-23). It shows the comments on the active note.
+**CMNT-16.** The right sidebar has a Comments view beside commit history and compile history (UI-23). It shows the comments on every note in the vault, whichever note is open. Why: a discussion must not hide in a note nobody has open.
 
-**CMNT-17.** Open threads come first, in the order their quotes appear in the note. Each thread shows:
+**CMNT-17.** Open threads come first, grouped by note. The note with the newest comment comes first. Each group starts with the note's path without `.md`, like `obsidian-plugin/Compile`. Inside a group, threads follow the order their quotes appear in the note. Each thread shows:
 - the quote, cut to two lines
 - each comment: the author's name, the time ("2 h ago") and the text. The name's tooltip gives the email.
 - a Reply box
 - a Resolve button
 
+**CMNT-26.** Clicking a thread's quote opens its note in the editor, scrolls to the quote and selects it. Why: the engineer must see exactly the text the comment is about.
+
+**CMNT-27.** When the quote is no longer in the note (CMNT-20), clicking it opens the note at the anchor's heading, else at the top, and selects nothing.
+
+**CMNT-28.** Clicking a group's note path opens the note at the top.
+
 **CMNT-18.** Replies show under the first comment, oldest first. A reply is a comment like any other, signed the same way (CMNT-8).
 
-**CMNT-19.** Anyone may resolve a thread. A resolved thread says "Resolved by {name}, {time}". Resolved threads are folded away under "{n} resolved" at the bottom. Each has a Reopen button.
+**CMNT-19.** Anyone may resolve a thread. A resolved thread says "Resolved by {name}, {time}". Resolved threads are folded away under "{n} resolved" at the bottom, grouped by note like open ones. Each has a Reopen button.
 
 **CMNT-20.** When a thread's quote is no longer in the note, the thread says "The text this was on has changed." and still shows the old quote. It stays open until someone resolves it. Why: a changed rule is exactly when the discussion matters.
 
-**CMNT-21.** Without comments: "No comments on this note. Select text to comment." Without an open note: "Open a note to see its comments."
+**CMNT-21.** When the vault has no comments: "No comments yet. Select text in a note to comment."
 
 **CMNT-22.** Comment text is shown as plain text, never as Markdown or HTML. Why: a comment must never run as code or pull content into Obsidian.
 

@@ -10,7 +10,7 @@ Compile turns pending revisions into code. Why: the code must follow the model, 
 
 **CMP-3.** Only one compile may run at a time in the app. A second attempt shows "A compile is already running." and opens the compile report.
 
-The lock lives inside the app. Why: theory.md is single-user for now. [[Team sync]] moves the lock to a shared server.
+The lock lives inside the app. It doesn't stop another engineer compiling the same vault on their own machine.
 
 ## Before it starts
 
@@ -122,7 +122,7 @@ Claude must follow these rules:
 
 **CMP-21.** When Claude asked questions, the end notice adds " Claude has N questions about the model." (singular: "1 question").
 
-**CMP-26.** Questions should have a reply button, clicking it will open note at rule that needs updating, if that is unavailable then open at heading. If everything fails then just the top of the note. Later after [[Team sync]] is implemented it will archive decisions for team.
+**CMP-26.** Questions should have a reply button, clicking it will open note at rule that needs updating, if that is unavailable then open at heading. If everything fails then just the top of the note.
 
 ## Last compile marker
 

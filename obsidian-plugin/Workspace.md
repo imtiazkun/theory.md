@@ -89,4 +89,4 @@ Why: the engineer must see at a glance what is unsigned and what the code doesn'
 
 ## Comments
 
-**UI-23.** The right sidebar has a Comments view beside commit history and compile history. It shows the active note's comments (see [[Comments]]).
+**UI-23.** The right sidebar has a Comments view beside commit history and compile history. It shows the comments on every note (see [[Comments]]).
