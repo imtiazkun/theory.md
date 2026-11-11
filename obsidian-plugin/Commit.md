@@ -17,19 +17,49 @@ A commit is how an engineer signs a revision of the model. Why: every line of th
 
 **CMT-5.** Committing a note without changes shows "No changes to commit in this note." Committing with no note open shows "Open a note to commit it."
 
-## Commit modal
+## Commit page
 
-**CMT-6.** The modal shows the file being committed, or the number of changed files.
+**CMT-17.** A commit opens the Commit page in a new tab. It never opens a modal. Why: the engineer must read every change before signing it, and a modal has no room for a diff.
 
-**CMT-7.** The message box defaults to "Update {NOTE NAME}" for one note, and "Update model" for all files. There should be a generate icon button represented by a sparkle. Clicking it should prompt claude to generate the message content. Sparkle should have a color fade in and out animation. 
+**CMT-18.** Only one Commit page for new changes may be open. Starting another commit brings it to the front.
+
+**CMT-6.** The page lists every changed file, each with a checkbox, its path and how it changed: modified, new, deleted or renamed.
+
+**CMT-19.** A commit started from a note ticks only that note. A commit started from the floating bar with no note changed ticks every file. Why: one intent per commit.
+
+**CMT-20.** Each file shows its diff under its name: removed lines in red, added lines in green, with 3 unchanged lines around each change. Longer unchanged stretches are folded.
+
+**CMT-21.** Above its diff, each note lists the rules it adds, changes and removes, by ID, like "Adds CMT-16. Changes CMT-7." Why: rules are what a compile acts on, so they must be seen first.
+
+**CMT-22.** A new file shows every line as added. A deleted file shows every line as removed. A renamed file shows "{old path} → {new path}" above its diff. A file that isn't text, like an image, shows only its name and how it changed.
+
+**CMT-23.** The page shows the files as they are now. When a listed file changes, its diff updates.
+
+**CMT-24.** The diff shows raw text. It is never rendered as Markdown, and it never writes to a note. Why: the engineer must see exactly what git will store.
+
+**CMT-7.** The message box starts empty. The Commit button stays disabled until the box holds text. Why: a ready-made message like "Update Refunds" gets committed as it is, and it never says why. A sparkle button sits in the message box. Clicking it asks Claude to write the message from the files this commit includes. Claude's message replaces the text in the box. While Claude writes, the sparkle blinks (CMT-15).
 
 **CMT-15.** While Claude writes, the sparkle blinks: it fades out and back in about once a second. It never spins, and no bar or line shows above the box or the button. This holds for every sparkle that asks Claude to write, pull request bodies (REP-28) included. Why: a blink says "working" without moving, and a spinning sparkle with a bar above it looks broken.
 
-**CMT-8** When other files also changed, the toggle "Include all changed files" appears, saying how many other files have changes. It is off by default. Why: one intent per commit.
+**CMT-16.** The message box's placeholder says "Say why. Git already shows what changed." Why: every commit must carry one intent with a message that says why (see [the root Instructions](../Instructions.md)), and the diff already records what changed.
 
-**CMT-9.** The modal shows who signs, as git reports it: "Signed as {name} <{email}>".
+**CMT-9.** The page shows who signs, as git reports it: "Signed as {name} <{email}>".
 
-**CMT-10.** Cmd/Ctrl+Enter submits. Cancel closes without committing.
+**CMT-10.** Cmd/Ctrl+Enter commits. Commit stays disabled while no file is ticked. Cancel closes the page without committing, and discards the message.
+
+CMT-8 is retired. It was the "Include all changed files" toggle, which the checkboxes replace (CMT-6, CMT-19).
+
+## Past commits
+
+**CMT-25.** Clicking a commit in commit history opens it on the Commit page, read-only (UI-31 in [[Workspace]]). Why: the engineer must see exactly what was signed, the same way they saw it before signing.
+
+**CMT-26.** A read-only Commit page shows the commit's full message, author, date and short hash. Below them it lists every file the commit changed, with the diffs as CMT-20 to CMT-22 and CMT-24 say. The note whose history was clicked comes first.
+
+**CMT-27.** The diff is the commit's own, against the commit before it. It never changes.
+
+**CMT-28.** A read-only Commit page has no checkboxes, no message box and no Commit button. It never changes the vault.
+
+**CMT-29.** A read-only Commit page opens in its own tab, apart from the Commit page for new changes. Clicking another commit reuses that tab. Why: looking at history must never discard a message being written.
 
 
 ## Author
@@ -38,10 +68,10 @@ A commit is how an engineer signs a revision of the model. Why: every line of th
 
 ## What gets committed
 
-**CMT-12.** A one-note commit stages and commits only that note. An all-files commit stages and commits every changed file.
+**CMT-12.** A commit stages and commits exactly the ticked files.
 
 ## After a commit
 
-**CMT-13.** The notice "Committed {short hash}" appears. The header buttons, the pending count and the commit history refresh.
+**CMT-13.** The Commit page closes, and the notice "Committed {short hash}" appears. The header buttons, the pending count and the commit history refresh.
 
 **CMT-14.** A failed commit shows "Commit failed: {reason}".

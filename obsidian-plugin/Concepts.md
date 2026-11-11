@@ -69,7 +69,7 @@ A hidden note is a note whose name starts with `_`, like `_welcome.md`, in any f
 A dot folder is a folder whose name starts with `.`, like `.obsidian/` or `.comments/`, anywhere in the vault. Dot folders hold files for theory.md's own workings, like comments, or for external services, like Obsidian's config. They are never theory.
 - Their files are never sent to any agent (INV-13).
 - Obsidian never shows them in the file explorer.
-- Their changes never count as changes to the model: not in the commit button, the commit modal, the compile button or the note header.
+- Their changes never count as changes to the model: not in the commit button, the Commit page, the compile button or the note header.
 - theory.md commits the dot folders it owns by itself, like `.comments/` (CMNT-13). Others, like `.obsidian/`, git ignores.
 
 Why: the model must hold theory only, while theory.md still needs somewhere in the vault to keep what the team shares.

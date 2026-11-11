@@ -28,6 +28,8 @@ Everything theory.md adds to Obsidian's window that other notes don't cover.
 
 **UI-5.** The right sidebar shows the active note's commits, newest first: subject, author, relative time and short hash. It follows renames.
 
+**UI-31.** Clicking a commit opens it on the Commit page, read-only, with its diff (see CMT-25 to CMT-29 in [[Commit]]).
+
 **UI-6.** When the note has uncommitted changes, it says "Uncommitted changes" and offers "Commit…".
 
 **UI-7.** A note without commits shows "No commits yet for this note." A vault that isn't set up shows a Setup vault button.
