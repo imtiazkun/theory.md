@@ -26,7 +26,7 @@ Why: Claude's pointers are untrusted, and a wrong pointer would blame the wrong 
 
 **OVL-9.** Clicking a problem jumps to its spot: it selects the text when editing and scrolls to it when reading.
 
-**OVL-10.** When the quote or heading is gone from the note, the banner says "This spot has changed since the compile." A jump then shows "Couldn't find this spot. The note has changed since the compile." When the note itself is gone: "<path> isn't in the vault any more."
+**OVL-10.** When the quote or heading is gone from the note, the banner says "This spot has changed since the compile." A jump then shows "Couldn't find this spot. The note has changed since the compile." When the note itself is gone: "{path} isn't in the vault any more."
 
 ## When nothing is anchored
 

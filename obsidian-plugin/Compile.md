@@ -116,7 +116,9 @@ Claude must follow these rules:
 
 **CMP-18. Cancelled.** The marker doesn't move. Summary: "You cancelled this compile. The last compile marker didn't move."
 
-**CMP-19. Claude Code can't start.** The report fails with the summary "Claude Code couldn't be started." When the command isn't found: "Couldn't find the Claude Code CLI ("<command>"). Set its path in theory.md settings." The marker doesn't move.
+**CMP-19. Claude Code can't start.** The report fails with the summary "Claude Code couldn't be started." When the command isn't found: "Couldn't find the Claude Code CLI ("{command}"). Set its path in theory.md settings." The marker doesn't move.
+
+**CMP-54.** When Claude Code fails to sign in, the compile counts as one that can't start (CMP-19). The summary says "Claude Code isn't signed in. Run claude in a terminal, then /login." The marker doesn't move. Why: Claude never read the revisions, so they aren't compiled.
 
 **CMP-20. Obsidian closed mid-compile.** On the next load, the running report becomes failed with the problem "Obsidian closed before this compile finished." The marker never moved.
 

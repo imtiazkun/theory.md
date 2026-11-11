@@ -10,11 +10,11 @@ Setup vault turns an Obsidian vault into a model. Why: the model needs history a
 
 **SET-3.** Setup needs git, and the name and email git uses (CFG-34). It checks this before touching anything, so a failure never leaves a half set-up vault.
 
-**SET-4.** Any failure shows "Setup vault failed: <reason>".
+**SET-4.** Any failure shows "Setup vault failed: {reason}".
 
 ## Starter notes
 
-**SET-5.** Setup writes `Index.md` with the text "Manifesting <vault name>", unless the vault root already has a file of that name, ignoring case.
+**SET-5.** Setup writes `Index.md` with the text "Manifesting {vault name}", unless the vault root already has a file of that name, ignoring case.
 
 **SET-6.** Setup writes `Instructions.md` with the human-only rules and the doctrine, unless the root already has `Instructions.md`, `instruction.md` or `instructions.md`, ignoring case. The starter text is owned by the code. Compile must not change it.
 
