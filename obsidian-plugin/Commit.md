@@ -72,6 +72,24 @@ CMT-8 is retired. It was the "Include all changed files" toggle, which the check
 
 ## After a commit
 
-**CMT-13.** The Commit page closes, and the notice "Committed {short hash}" appears. The header buttons, the pending count and the commit history refresh.
+**CMT-13.** The Commit page closes, and the notice "Committed and pushed {short hash}" appears. The header buttons, the pending count, the sync status and the commit history refresh.
 
 **CMT-14.** A failed commit shows "Commit failed: {reason}".
+
+## Push
+
+**CMT-30.** Every commit pushes the vault's `main` to `origin` straight after it. Why: a revision that lives on one machine is lost with that machine, and nobody else can pull it.
+
+**CMT-31.** Comments that commit themselves (CMNT-13) push the same way.
+
+**CMT-32.** A push never forces and never pushes tags. The last compile marker stays on this machine. Why: a forced push can delete someone else's revisions.
+
+**CMT-33.** A push must never wait for a password or a passphrase. When git asks for one, the push fails. Why: Obsidian has no terminal to type it into, and a waiting push would hang the commit.
+
+**CMT-34.** When the push fails, the commit stays. The notice says "Committed {short hash}, but couldn't push: {reason}". The sync status then shows how many revisions aren't pushed (PULL-9). Why: a commit is a signed revision, and a network failure must never undo it.
+
+**CMT-35.** When the remote has revisions the vault doesn't, the push is refused. The notice says "Committed {short hash}, but couldn't push: the remote has new revisions. Pull with rebase in git, then push." Why: the plugin never merges or rebases (PULL-18), so a person must join the two histories.
+
+**CMT-36.** When the vault has no `origin`, a commit doesn't push, and the notice stays "Committed {short hash}". Why: a vault may live on one machine on purpose.
+
+**CMT-37.** The next commit, or Push now in the sync menu (PULL-19), pushes every revision that isn't pushed yet.

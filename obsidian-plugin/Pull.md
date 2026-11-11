@@ -48,6 +48,7 @@ The plugin keeps the vault and the code up to date with their git remotes by its
 - When the remote was last checked: "Checked the remote 2 min ago". Before any fetch has worked: "Not checked yet".
 - The last pull that brought revisions: "Last pulled 3 revisions 1 h ago". When none has: "Nothing pulled since Obsidian opened".
 - Pull now.
+- Push now, when the vault has revisions that aren't pushed. It pushes as CMT-30 to CMT-35 in [[Commit]] say.
 - Pull settings…, which opens the settings.
 
 The first two lines are information and can't be clicked. Why: the engineer must see how fresh the vault is without guessing from one label.
