@@ -13,7 +13,7 @@ theory.md keeps the theory on the page:
 - AI builds the code from the model.
 - The AI never writes to the model.
 
-The people who understand the system stay the source of truth.
+The people who understand the system stay the source of truth. asd 
 
 ## The loop
 
