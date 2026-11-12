@@ -101,6 +101,10 @@ The card must show every rule before the engineer clicks Always allow. Why: the 
 
 **CFG-38.** A toggle, on by default, shows or hides rule authors (HDR-14). The change applies at once to every open note. Why: some engineers find inline authors noisy while writing.
 
+## Hooks
+
+**CFG-39.** The Hooks section holds the list of hooks. Each hook has an event, a command, a Test button and a remove button. Add hook adds an empty one. [[Hooks]] says how they run.
+
 ## Older settings
 
 **CFG-14.** When the project folder is empty and the saved data has `codeRepoPath` from an older version, that path becomes the project folder.

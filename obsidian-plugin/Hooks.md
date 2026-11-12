@@ -5,14 +5,14 @@ Hooks run the engineer's own commands when something happens in theory.md, like 
 **HOOK-1.** A hook is a shell command tied to one event. The settings hold a list of hooks, each with an event and a command.
 
 **HOOK-2.** The events are:
-- `comment`: a comment, reply, resolve or reopen is committed (CMNT-13 in [[Comments]])
-- `commit`: a revision of the model is committed (see [[Commit]])
-- `push`: a push finishes, pushed or failed (CMT-30)
+- `comment`: an engineer posts a comment, reply, resolve or reopen (see [[Comments]]). It fires as soon as the comment is saved, even when its own commit fails (CMNT-13). Its details say whether the comment was committed.
+- `commit`: theory.md commits a revision of the model, from the Commit page (see [[Commit]]), Setup vault or Create missing files. Commits of comment files never fire it; they fire `comment`. Moving or deleting a comment file (CMNT-15) fires no event.
+- `push`: a push to `origin` finishes, pushed or failed (CMT-30). A vault without `origin` never fires it (CMT-36).
 - `compile-start`: a compile starts (see [[Compile]])
 - `compile-end`: a compile succeeds, fails or is cancelled
 - `permission-request`: Claude asks for permission during a compile (CMP-28)
 
-**HOOK-3.** The command gets the event as JSON on stdin: the event, the vault name, the author, the time and the event's details. Details are the note and comment text, the commit hash and subject, or the compile status, summary and number of questions.
+**HOOK-3.** The command gets the event as JSON on stdin: the event, the vault name, the author, the time and the event's details. Details are the note and comment text, the commit hash and subject, or the compile status, summary and number of questions. For `push`, the details are whether it pushed and git's message when it failed. For `permission-request`, they are the tool, the exact command or file, and Claude's reason.
 
 ## Running
 
