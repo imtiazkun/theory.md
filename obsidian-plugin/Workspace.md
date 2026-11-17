@@ -46,7 +46,7 @@ Everything theory.md adds to Obsidian's window that other notes don't cover.
 
 ## Commands
 
-**UI-10.** The commands are: Setup vault, Show commit history, Compile, Show compile report, Commit current note, Show repositories, Pull now, Comment on selection, Show comments. There are no others.
+**UI-10.** The commands are: Setup vault, Show commit history, Compile, Build, Show compile report, Commit current note, Show repositories, Pull now, Comment on selection, Show comments. There are no others.
 
 ## Hidden folders
 

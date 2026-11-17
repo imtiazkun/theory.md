@@ -105,6 +105,10 @@ The card must show every rule before the engineer clicks Always allow. Why: the 
 
 **CFG-39.** The Hooks section holds the list of hooks. Each hook has an event, a command, a Test button and a remove button. Add hook adds an empty one. [[Hooks]] says how they run.
 
+## GitHub Project
+
+**CFG-40.** The GitHub Project that every issue a compile creates is added to (CMP-66), given as its URL. Empty by default. Compile and Build don't start while it is empty (CMP-57). Why: one project shows the work of every repository in one place.
+
 ## Older settings
 
 **CFG-14.** When the project folder is empty and the saved data has `codeRepoPath` from an older version, that path becomes the project folder.

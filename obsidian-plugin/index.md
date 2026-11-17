@@ -6,7 +6,8 @@
 
 - [[Concepts]]: the words every other note uses.
 - [[Model protection]]: the rules that keep the AI out of the model.
-- [[Compile]]: how revisions become code, and every outcome.
+- [[Compile]]: how revisions become GitHub issues, and every outcome.
+- [[Build]] (BLD): how issues become code, branches and pull requests.
 - [[Commit]]: how an engineer signs a revision.
 - [[Setup vault]]: how a vault becomes a model.
 - [[Compile report]]: what a compile reports back, and where reports live.

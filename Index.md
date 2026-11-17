@@ -13,16 +13,17 @@ theory.md keeps the theory on the page:
 - AI builds the code from the model.
 - The AI never writes to the model.
 
-The people who understand the system stay the source of truth. asd 
+The people who understand the system stay the source of truth.
 
 ## The loop
 
 1. The engineer edits notes in the vault.
 2. The engineer commits a note. The plugin records it as a git commit signed with the engineer's name and email.
 3. The engineer clicks Compile. The plugin sends every revision committed since the last compile to Claude Code.
-4. Claude Code changes the code in the project folder to match the model.
-5. The plugin shows a compile report in Obsidian: summary, changes, questions and problems.
+4. Claude Code reads the model and the code, and plans the work. The plugin creates it on GitHub as one issue, or an epic with sub-issues.
+5. The plugin shows a compile report in Obsidian: summary, issues, questions and problems.
 6. The engineer answers Claude's questions by editing the model and compiling again.
+7. The engineer clicks Build. Claude Code writes the code for each issue on its own branch. One issue becomes a pull request the engineer merges. An epic's sub-issues are merged into an epic branch, which the engineer merges.
 
 ## Scope
 

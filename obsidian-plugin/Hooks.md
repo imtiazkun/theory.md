@@ -10,9 +10,11 @@ Hooks run the engineer's own commands when something happens in theory.md, like 
 - `push`: a push to `origin` finishes, pushed or failed (CMT-30). A vault without `origin` never fires it (CMT-36).
 - `compile-start`: a compile starts (see [[Compile]])
 - `compile-end`: a compile succeeds, fails or is cancelled
-- `permission-request`: Claude asks for permission during a compile (CMP-28)
+- `build-start`: a build starts (see [[Build]])
+- `build-end`: a build ends: finished, stopped by the engineer (BLD-22) or cancelled (BLD-23). A build that doesn't start (BLD-5 to BLD-9) fires neither build event.
+- `permission-request`: Claude asks for permission during a build (CMP-28)
 
-**HOOK-3.** The command gets the event as JSON on stdin: the event, the vault name, the author, the time and the event's details. Details are the note and comment text, the commit hash and subject, or the compile status, summary and number of questions. For `push`, the details are whether it pushed and git's message when it failed. For `permission-request`, they are the tool, the exact command or file, and Claude's reason.
+**HOOK-3.** The command gets the event as JSON on stdin: the event, the vault name, the author, the time and the event's details. Details are the note and comment text, the commit hash and subject, or the compile status, summary, number of questions and the issues it created. For `build-start`, the details are the issues to build and the epic, if there is one. For `build-end`, they are how the build ended, each issue's state (BLD-3), the pull requests it opened and the epic branch, if there is one. For `push`, the details are whether it pushed and git's message when it failed. For `permission-request`, they are the tool, the exact command or file, and Claude's reason.
 
 ## Running
 

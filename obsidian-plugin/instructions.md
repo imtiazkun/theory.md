@@ -6,10 +6,18 @@ The writing rules in [the root Instructions](../Instructions.md) apply here. Rul
 
 **TEST-2.** Before every commit, Claude must run `npm run build` and `npm test`, and both must pass. When one fails, Claude fixes it or reports it as a problem. Claude never commits past a failing test.
 
-**TEST-3.** Every change to branch, commit, compile or anchor logic must come with a test that would have failed before the change.
+**TEST-3.** Every change to branch, commit, compile, issue, build or anchor logic must come with a test that would have failed before the change.
 
 **TEST-4.** These must always have tests:
-- compile branches: creating, reusing, deleting an empty branch, and starting fresh after a merge, across several repositories
+- compile checks: each check that stops a compile, in order, with its message, and the marker left where it was (CMP-36, CMP-55 to CMP-57)
+- a read-only compile: tools that write or run commands denied, and no file, commit, branch or push in any code repository (CMP-13, CMP-69)
+- the plan: one issue or an epic (CMP-59), sub-issues kept in build order (CMP-60), and short names and titles checked (CMP-61, CMP-62)
+- creating issues: the epic in the repository with the most sub-issues and the tie broken by name (CMP-64), the `epic` label created when missing (CMP-65), sub-issues linked to the epic, every issue added to the GitHub Project (CMP-66), and Retry and Discard after a failure, with the marker left in place on Discard (CMP-68)
+- build checks: each check that stops a build, with its message (BLD-5 to BLD-9)
+- build branches: issue and epic branch names, the same epic branch name in every repository, and `-2` when a name is taken (BLD-10 to BLD-12)
+- one issue: its branch from the default branch, pushed, and a pull request into the default branch that closes the issue (BLD-13, BLD-14)
+- an epic: sub-issues built in order, each branch made from the epic branch, its pull request merged into the epic branch, the sub-issue closed, and nothing ever merged into a default branch (BLD-15, BLD-16, BLD-25)
+- build failures: Retry, Skip and Stop, Cancel keeping or deleting the branch, and issues not built left open (BLD-22, BLD-23)
 - changed files and commits: one note, all files, with `.obsidian/` ignored and with it tracked
 - anchors: kept when the file, heading and quote are in the snapshot, dropped otherwise
 - Always allow: which rules a request saves (CFG-16)

@@ -71,7 +71,7 @@ A suggestion is ideation for the engineer. It is never model text. Why: the word
 
 ## Pull requests
 
-**REP-25.** A finished compile shows a Create PR button beside its status when at least one repository has an open compile branch with commits and no pull request yet (see "Compile branches" in [[Compile]]).
+**REP-25.** A build that finished every sub-issue of an epic shows a Create PR button for its epic branches (BLD-17 in [[Build]]). One issue and each sub-issue get their pull request from the build itself (BLD-14, BLD-16).
 
 **REP-26.** Create PR opens the Create PR page in a new tab. The page has a shared Title and Body, and one section per repository with commits:
 - the repository name and `{compile branch} → {base}`
@@ -81,7 +81,7 @@ A suggestion is ideation for the engineer. It is never model text. Why: the word
 - Reviewers, GitHub usernames separated by commas, empty by default
 - "Use the shared title and body", a toggle, on by default. Turning it off shows that repository's own Title and Body, filled from the shared ones.
 
-**REP-27.** The Title defaults to the subject of the latest compiled revision. The Body defaults to empty.
+**REP-27.** The Title defaults to the epic's title. The Body defaults to "Closes #{epic number}" in the epic's repository, and "Part of {repo}#{epic number}" in the others.
 
 **REP-28.** Each Body box has a generate button with a sparkle, the same as the commit message (CMT-7). It runs Claude Code with no tools, using the model and effort from [[Settings]]. Claude gets the compile's summary, the revisions compiled, the problems and questions still open, and the changes for that repository (all repositories for the shared Body). The generated text replaces the box's text, and the engineer may edit it. Why no tools: the body is drawn from the report, and generating it must never change code or model.
 
@@ -92,6 +92,8 @@ A suggestion is ideation for the engineer. It is never model text. Why: the word
 **REP-31.** When a repository fails, its section shows "Couldn't create the pull request: {reason}" and keeps its fields, so Create can be tried again. Pull requests already created stay.
 
 **REP-32.** Once pull requests exist, the report lists each one with its repository, link and state: draft, open, merged or closed. The state refreshes as REP-34 says. Create PR is then hidden for those repositories.
+
+**REP-40.** A compile that created issues lists them, the epic first, each with its repository, number, title, link and build state (BLD-3).
 
 **REP-33.** Text on the Create PR page goes only to GitHub. It is never written into the vault. Closing the page discards unsent text.
 

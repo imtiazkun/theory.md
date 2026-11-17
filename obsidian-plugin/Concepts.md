@@ -34,7 +34,19 @@ The last compile marker is the git tag `theory/compiled` in the vault repository
 
 ## Compile branch
 
-A compile branch is a branch named `theory/compile-{revision}` in a code repository. Compiles commit there, never on the base directly. It stays open until it is merged into its base or its pull request is closed. See [[Compile]].
+A compile branch is a branch [[Build]] makes in a code repository: an issue branch or an epic branch. Its name starts with `theory/`. Builds commit there, never on the default branch directly. It stays open until it is merged into its base or its pull request is closed.
+
+## Issue
+
+An issue is a GitHub issue a compile creates in a code repository. It says what to build and why, and lists the rule IDs it covers. One issue changes exactly one repository. See [[Compile]].
+
+## Epic
+
+An epic is a GitHub issue with the label `epic` whose sub-issues are the issues of one compile. A compile makes an epic when its work spans several repositories or several intents. Each sub-issue is an issue.
+
+## Build
+
+A build turns one compile's issues into code. It is the only step that changes code. See [[Build]].
 
 ## Pending revisions
 
