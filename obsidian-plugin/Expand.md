@@ -22,7 +22,7 @@ The notes are read as they are now, uncommitted edits included. Why: Expand comp
 
 **EXP-6.** When the repository exists in the project folder, Claude may read its code with Read, Glob and Grep, inside that repository only. Claude gets no other tools. It can't write, edit or run anything. Why: in a repository that already exists, code that no note describes is the most useful gap Expand can find.
 
-**EXP-7.** Expand uses the model and effort from [[Settings]].
+**EXP-7.** Expand uses the model and effort in the Expand row of [[Settings]] (CFG-41).
 
 ## What Claude must return
 

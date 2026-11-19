@@ -36,17 +36,23 @@ CFG-1 to CFG-3 are retired. Older versions took a full name and email here.
 
 ## Claude Code command
 
-**CFG-8.** The Claude Code CLI, as a command name or an absolute path. Default: `claude`. Used when Agent is "Claude Code" (AGT-4), and always for Expand, commit messages and pull request bodies (AGT-2).
+**CFG-8.** The Claude Code CLI, as a command name or an absolute path. Default: `claude`. Used by every task whose agent is "Claude Code" (CFG-41), and always by Expand and Writing (CFG-43).
 
-## Compile model and effort
+## Agents and models
 
-**CFG-17.** Model is a dropdown: "Claude Code default", "Fable", "Opus", "Sonnet" and "Haiku". The default is "Claude Code default". Compile passes the choice to Claude Code as `--model fable`, `opus`, `sonnet` or `haiku`. "Claude Code default" passes nothing, and Claude Code decides. Why aliases: an alias always means the latest model of that kind, so the setting never goes stale.
+**CFG-41.** The settings hold one row for each task: Compile, Build, Expand and Writing. Writing covers commit messages, pull request bodies and suggestions. Each row has an agent, a model and an effort. Why: planning, coding and short writing need different amounts of thinking, and cost differs with each.
 
-**CFG-18.** Effort is a dropdown: "Claude Code default", "Low", "Medium", "High", "Extra high" and "Max". The default is "Claude Code default". Compile passes the choice to Claude Code as `--effort low`, `medium`, `high`, `xhigh` or `max`. "Claude Code default" passes nothing.
+**CFG-42.** Compile's row holds the agent, model and effort that compiles used before rows existed. Every other row defaults to "Same as Compile", which follows Compile's row as it changes. Why: an upgrade must never change how an existing vault works (AGT-3).
 
-**CFG-19.** A change to model or effort applies from the next compile. A running compile keeps the model and effort it started with.
+**CFG-43.** Only Compile and Build may use an ACP agent (see [[Agents]]). Expand and Writing always use Claude Code, with their own model and effort. Why: they are one-shot text tasks with no tools.
 
-Why: the engineer decides how much thinking turning the theory into code deserves, and the compile must not change model because Claude Code's own default changed.
+**CFG-17.** Each row's Model is a dropdown: "Claude Code default", "Fable", "Opus", "Sonnet" and "Haiku". The default is "Claude Code default". The task passes the choice to Claude Code as `--model fable`, `opus`, `sonnet` or `haiku`. "Claude Code default" passes nothing, and Claude Code decides. Why aliases: an alias always means the latest model of that kind, so the setting never goes stale.
+
+**CFG-18.** Each row's Effort is a dropdown: "Claude Code default", "Low", "Medium", "High", "Extra high" and "Max". The default is "Claude Code default". The task passes the choice to Claude Code as `--effort low`, `medium`, `high`, `xhigh` or `max`. "Claude Code default" passes nothing.
+
+**CFG-19.** A change to a row applies from that task's next run. A running task keeps the agent, model and effort it started with.
+
+Why: the engineer decides how much thinking each task deserves, and no task may change model because Claude Code's own default changed.
 
 ## Permission mode
 

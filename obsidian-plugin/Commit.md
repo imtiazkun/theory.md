@@ -37,7 +37,7 @@ A commit is how an engineer signs a revision of the model. Why: every line of th
 
 **CMT-24.** The diff shows raw text. It is never rendered as Markdown, and it never writes to a note. Why: the engineer must see exactly what git will store.
 
-**CMT-7.** The message box starts empty. The Commit button stays disabled until the box holds text. Why: a ready-made message like "Update Refunds" gets committed as it is, and it never says why. A sparkle button sits in the message box. Clicking it asks Claude to write the message from the files this commit includes. Claude's message replaces the text in the box. While Claude writes, the sparkle blinks (CMT-15).
+**CMT-7.** The message box starts empty. The Commit button stays disabled until the box holds text. Why: a ready-made message like "Update Refunds" gets committed as it is, and it never says why. A sparkle button sits in the message box. Clicking it asks Claude to write the message from the files this commit includes, using the model and effort in the Writing row of [[Settings]] (CFG-41). Claude's message replaces the text in the box. While Claude writes, the sparkle blinks (CMT-15).
 
 **CMT-15.** While Claude writes, the sparkle blinks: it fades out and back in about once a second. It never spins, and no bar or line shows above the box or the button. This holds for every sparkle that asks Claude to write, pull request bodies (REP-28) included. Why: a blink says "working" without moving, and a spinning sparkle with a bar above it looks broken.
 

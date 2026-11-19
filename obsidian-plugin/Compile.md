@@ -73,7 +73,7 @@ Claude must follow these rules:
 
 ## How Claude runs
 
-**CMP-13.** The agent chosen in [[Settings]] runs in the project folder, with no chat: Claude Code by default, or an ACP agent (see [[Agents]]). It uses the model and effort from [[Settings]]. It gets only tools that read: reading files, searching and listing. Every tool that writes or runs a command is denied without a card. Why: a compile only plans, and only [[Build]] changes code.
+**CMP-13.** The agent chosen in the Compile row of [[Settings]] (CFG-41) runs in the project folder, with no chat: Claude Code by default, or an ACP agent (see [[Agents]]). It uses that row's model and effort. It gets only tools that read: reading files, searching and listing. Every tool that writes or runs a command is denied without a card. Why: a compile only plans, and only [[Build]] changes code.
 
 **CMP-14.** Claude's tool calls stream into the report's activity log while it runs.
 
@@ -114,7 +114,7 @@ These rules apply to [[Build]]. A compile never asks, because it only reads (CMP
 
 ## Claude's answer
 
-**CMP-15.** Claude answers in a fixed shape: status (succeeded or failed), summary, the plan, questions with the notes they refer to, and problems with anchors. The plan is one issue, or an epic with its sub-issues in build order. Each issue has a repository, a title, a body, the rule IDs it covers and a short name.
+**CMP-15.** Claude answers in a fixed shape: status (succeeded or failed), summary, the plan, questions with the notes they refer to, and problems with anchors. The plan is one issue, an epic with its sub-issues in build order, or empty when the code already matches the model. Each issue has a repository, a title, a body, the rule IDs it covers and a short name.
 
 ## The plan
 
@@ -126,9 +126,18 @@ These rules apply to [[Build]]. A compile never asks, because it only reads (CMP
 
 **CMP-62.** A title is a short sentence in the imperative, under 70 characters, like "Show a diff for each file on the Commit page".
 
+**CMP-70.** Before creating any issue, the plugin checks the plan:
+- every issue names a repository in the project folder
+- one issue changes one repository, and an epic has at least two sub-issues
+- every issue lists at least one rule ID
+- every short name follows CMP-61, and no two in one plan are the same
+- every title has under 70 characters
+
+When a check fails, the compile fails as CMP-17 says, and no issue is created. Problems list each broken check with the issue it is about. Why: a plan the plugin can't build from must never reach GitHub, and the engineer must see what Claude got wrong.
+
 ## Creating the issues
 
-**CMP-63.** After Claude answers succeeded, the plugin creates the issues with `gh`. Claude never creates them.
+**CMP-63.** After Claude answers succeeded and the plan passes CMP-70, the plugin creates the issues with `gh`. Claude never creates them.
 
 **CMP-64.** One issue goes in its own repository. An epic goes in the repository with the most sub-issues. With a tie, it goes in the first of those repositories by name. Each sub-issue goes in its own repository, linked as a native sub-issue of the epic. Why: the epic sits where most of the work is.
 
@@ -148,7 +157,9 @@ Why: a GitHub failure says nothing about the model, so the revisions must stay p
 
 **CMP-16. Succeeded.** Claude said succeeded, the run wasn't an error and every issue exists. The marker moves. Notice: "Compile finished. {n} issues are ready to build." (singular: "1 issue is ready to build."). The report then offers Build (BLD-1 in [[Build]]).
 
-**CMP-17. Failed.** Claude said failed, or gave no structured answer, or the snapshot changed. No issue is created. The marker moves. Notice: "Compile failed. See the compile report." Without a structured answer, the report's problems include "Claude Code exited with code N." and the error output.
+**CMP-71. Nothing to build.** Claude said succeeded with an empty plan. No issue is created, and the marker moves. Notice: "Compile finished. The code already matches the model." The report offers no Build. Why: revisions that change no code, like a reworded reason, are still compiled.
+
+**CMP-17. Failed.** Claude said failed, or gave no structured answer, or the plan broke CMP-70, or the snapshot changed. No issue is created. The marker moves. Notice: "Compile failed. See the compile report." Without a structured answer, the report's problems include "Claude Code exited with code N." and the error output.
 
 **CMP-18. Cancelled.** No issue is created, and the marker doesn't move. Summary: "You cancelled this compile. The last compile marker didn't move."
 

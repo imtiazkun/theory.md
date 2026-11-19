@@ -39,7 +39,7 @@ A suggestion is ideation for the engineer. It is never model text. Why: the word
 
 **REP-17.** Suggest sends Claude Code this context and nothing else: the question, its anchors, the current text of every note the question names (uncommitted edits included), and the compile's summary. Why: the suggestion must fit the note as the engineer sees it now.
 
-**REP-18.** Suggest runs Claude Code with no tools, using the model and effort from [[Settings]]. Claude reads nothing beyond that context and writes nothing.
+**REP-18.** Suggest runs Claude Code with no tools, using the model and effort in the Writing row of [[Settings]] (CFG-41). Claude reads nothing beyond that context and writes nothing.
 
 **REP-19.** While Claude works, the button says "Suggesting…" and is disabled. One question has at most one suggestion at a time.
 
@@ -71,7 +71,7 @@ A suggestion is ideation for the engineer. It is never model text. Why: the word
 
 ## Pull requests
 
-**REP-25.** A build that finished every sub-issue of an epic shows a Create PR button for its epic branches (BLD-17 in [[Build]]). One issue and each sub-issue get their pull request from the build itself (BLD-14, BLD-16).
+**REP-25.** A build that reached the end of an epic shows a Create PR button for its epic branches (BLD-17 in [[Build]]), even when it skipped sub-issues (BLD-28). One issue and each sub-issue get their pull request from the build itself (BLD-14, BLD-16).
 
 **REP-26.** Create PR opens the Create PR page in a new tab. The page has a shared Title and Body, and one section per repository with commits:
 - the repository name and `{compile branch} → {base}`
@@ -79,11 +79,14 @@ A suggestion is ideation for the engineer. It is never model text. Why: the word
 - Base, a dropdown of the remote's branches, set to the compile branch's base
 - Draft, a toggle, off by default
 - Reviewers, GitHub usernames separated by commas, empty by default
-- "Use the shared title and body", a toggle, on by default. Turning it off shows that repository's own Title and Body, filled from the shared ones.
+- that repository's own Title and Body
+- "Use the shared title and body", a toggle, off by default. Turning it on hides that repository's own Title and Body, and the shared ones are used instead.
 
-**REP-27.** The Title defaults to the epic's title. The Body defaults to "Closes #{epic number}" in the epic's repository, and "Part of {repo}#{epic number}" in the others.
+Why off: each repository refers to the epic differently (REP-27), so one body can't fit them all.
 
-**REP-28.** Each Body box has a generate button with a sparkle, the same as the commit message (CMT-7). It runs Claude Code with no tools, using the model and effort from [[Settings]]. Claude gets the compile's summary, the revisions compiled, the problems and questions still open, and the changes for that repository (all repositories for the shared Body). The generated text replaces the box's text, and the engineer may edit it. Why no tools: the body is drawn from the report, and generating it must never change code or model.
+**REP-27.** Every Title, the shared one included, defaults to the epic's title. A repository's Body defaults to "Closes #{epic number}" in the epic's repository, and "Part of {owner}/{name}#{epic number}" in the others (BLD-26 in [[Build]]). The shared Body defaults to "Part of {owner}/{name}#{epic number}".
+
+**REP-28.** Each Body box has a generate button with a sparkle, the same as the commit message (CMT-7). It runs Claude Code with no tools, using the model and effort in the Writing row of [[Settings]] (CFG-41). Claude gets the compile's summary, the revisions compiled, the problems and questions still open, and the changes for that repository (all repositories for the shared Body). The generated text replaces the box's text, and the engineer may edit it. Why no tools: the body is drawn from the report, and generating it must never change code or model.
 
 **REP-29.** Create pushes each compile branch to its repository's `origin` and opens a pull request with `gh`, using that section's title, body, base, draft and reviewers. Once every pull request exists, each body gets a footer linking the vault revisions compiled and the pull requests in the other repositories. Why: a reviewer of one repository must find the rest of the same compile.
 
