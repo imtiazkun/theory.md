@@ -140,7 +140,7 @@ When a check fails, the compile fails as CMP-17 says, and no issue is created. P
 
 **CMP-63.** After Claude answers succeeded and the plan passes CMP-70, the plugin creates the issues with `gh`. Claude never creates them.
 
-**CMP-64.** One issue goes in its own repository. An epic goes in the repository with the most sub-issues. With a tie, it goes in the first of those repositories by name. Each sub-issue goes in its own repository, linked as a native sub-issue of the epic. Why: the epic sits where most of the work is.
+**CMP-64.** One issue goes in its own repository. An epic goes in the repository with the most sub-issues. With a tie, it goes in the first of those repositories by name. Each sub-issue goes in its own repository, linked as a native sub-issue of the epic. Why: the epic sits where most of the work is. A continued epic (CMP-77) stays in its repository, even when another repository now has more sub-issues. Why: moving it would close it and open a new one, which loses what continuing keeps.
 
 **CMP-65.** An epic gets the label `epic`. The plugin creates the label in that repository when it is missing.
 
@@ -191,7 +191,7 @@ Otherwise Recompile is hidden. Why: a later compile's work would be planned twic
 
 **CMP-74.** Recompile is disabled until at least one revision is pending (CMP-9). Its tooltip then says "Commit your answers to the model first." Why: with the same model, Claude would plan the same work again.
 
-**CMP-75.** A recompile runs the same checks as a compile (CMP-48 to CMP-57), then checks CMP-73 again. When CMP-73 no longer holds: "Recompile failed: {reason}". Why: a build may have started since the report was drawn.
+**CMP-75.** A recompile runs the same checks as a compile (CMP-48 to CMP-57), then checks CMP-73 again. Their messages start with "Recompile failed:" instead of "Compile failed:", as BLD-5 does for a build. When CMP-73 no longer holds: "Recompile failed: {reason}". Why: a build may have started since the report was drawn.
 
 ### What Claude receives and answers
 
@@ -203,7 +203,7 @@ Otherwise Recompile is hidden. Why: a later compile's work would be planned twic
 
 **CMP-78.** Continuing has limits. The plugin checks them with CMP-70, and a plan that breaks one fails the compile as CMP-17 says:
 - it continues an issue from the earlier compile that is still open
-- it stays in the same repository
+- an issue stays in the same repository (an epic has no repository in the plan, and CMP-64 keeps it where it is)
 - an epic continues an epic, and an issue continues an issue (a sub-issue counts as an issue)
 - no earlier issue is continued twice
 
