@@ -98,6 +98,10 @@ Why off: each repository refers to the epic differently (REP-27), so one body ca
 
 **REP-40.** A compile that created issues lists them, the epic first, each with its repository, number, title, link and build state (BLD-3).
 
+**REP-41.** A recompiled compile's report says "Recompiled on {date}" with a link to the new report. It offers no Build and no Recompile. Each of its issues shows where it went: "continued", or "closed".
+
+**REP-42.** A recompile's report says "Recompiles the compile of {date}" with a link to the earlier report. Its issue list marks each issue as new or continued, and lists the closed ones after it.
+
 **REP-33.** Text on the Create PR page goes only to GitHub. It is never written into the vault. Closing the page discards unsent text.
 
 ## Pull request states

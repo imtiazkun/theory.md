@@ -2,7 +2,7 @@ Compile turns pending revisions into GitHub issues: one issue, or an epic with s
 
 ## Starting a compile
 
-**CMP-1.** A compile starts from the Compile button in the floating bar, the hammer in the ribbon or the command "Compile". There are no other triggers.
+**CMP-1.** A compile starts from the Compile button in the floating bar, the hammer in the ribbon, the command "Compile", or Recompile in a compile report (CMP-72). There are no other triggers.
 
 **CMP-2.** The compile report opens in a tab as soon as a compile starts.
 
@@ -45,7 +45,7 @@ These checks run in this order. When one fails, the compile doesn't start and th
 - the git repositories in the project folder (or that the folder is a single repository, or has none yet)
 - the last compiled revision, or the statement that this is the first compile
 - every pending revision, oldest first: hash, author, date and subject
-- the diff from the marker to the latest commit, with a summary of changed files
+- the diff from the marker to the latest commit, with a summary of changed files (a recompile starts it at the earlier compile's start and also gets its open issues, CMP-76)
 
 On the first compile the diff starts from an empty model.
 
@@ -66,6 +66,7 @@ Claude must follow these rules:
 - Claude plans one issue or an epic, as CMP-59 to CMP-62 say.
 - Every issue says what to build and why, in the model's words. It lists the rule IDs it covers. Those rules are its acceptance criteria.
 - Every issue changes exactly one repository.
+- In a recompile, Claude continues an earlier issue whenever the same work is still asked for in the same repository, as CMP-77 says.
 - Anything that went wrong goes in problems.
 - A problem that comes from the model carries anchors: the note, the heading and a quote copied exactly from the note, under 200 characters.
 - Claude reports failed when it can't plan the work.
@@ -114,7 +115,7 @@ These rules apply to [[Build]]. A compile never asks, because it only reads (CMP
 
 ## Claude's answer
 
-**CMP-15.** Claude answers in a fixed shape: status (succeeded or failed), summary, the plan, questions with the notes they refer to, and problems with anchors. The plan is one issue, an epic with its sub-issues in build order, or empty when the code already matches the model. Each issue has a repository, a title, a body, the rule IDs it covers and a short name.
+**CMP-15.** Claude answers in a fixed shape: status (succeeded or failed), summary, the plan, questions with the notes they refer to, and problems with anchors. The plan is one issue, an epic with its sub-issues in build order, or empty when the code already matches the model. Each issue has a repository, a title, a body, the rule IDs it covers and a short name. In a recompile, an issue may also name the earlier issue it continues and say what changed (CMP-77, CMP-79).
 
 ## The plan
 
@@ -172,6 +173,57 @@ Why: a GitHub failure says nothing about the model, so the revisions must stay p
 **CMP-21.** When Claude asked questions, the end notice adds " Claude has N questions about the model." (singular: "1 question").
 
 **CMP-26.** Questions should have a reply button, clicking it will open note at rule that needs updating, if that is unavailable then open at heading. If everything fails then just the top of the note.
+
+## Recompile
+
+Recompile plans a compile's work again, with the revisions committed since. It updates that compile's issues where it can, and replaces them only where it must. Why: a compile's questions and problems are answered in the model after the issues exist. Without Recompile, the old issues go stale, and the next compile plans the same work a second time.
+
+### When it's offered
+
+**CMP-72.** The report of a compile that created issues shows Recompile next to Build, while that compile can be recompiled (CMP-73). It is the only way to start a recompile.
+
+**CMP-73.** A compile can be recompiled while:
+- no compile after it succeeded
+- no issue of its plan has been built: no build branch exists and no pull request was opened
+- it hasn't been recompiled already
+
+Otherwise Recompile is hidden. Why: a later compile's work would be planned twice, and built code would be left with no issue.
+
+**CMP-74.** Recompile is disabled until at least one revision is pending (CMP-9). Its tooltip then says "Commit your answers to the model first." Why: with the same model, Claude would plan the same work again.
+
+**CMP-75.** A recompile runs the same checks as a compile (CMP-48 to CMP-57), then checks CMP-73 again. When CMP-73 no longer holds: "Recompile failed: {reason}". Why: a build may have started since the report was drawn.
+
+### What Claude receives and answers
+
+**CMP-76.** A recompile is a compile, with these differences. Every other Compile rule applies.
+- The revisions and the diff Claude receives start where the earlier compile started, not at the marker. They cover the earlier compile's revisions and every pending revision.
+- Claude also receives the earlier compile's issues that are still open: number, repository, kind (epic or issue), title, body, rule IDs and short name.
+
+**CMP-77.** Claude plans all the work again, then matches it to the earlier issues. An issue in the new plan may continue one earlier issue, by naming its number. Claude is told to continue an earlier issue whenever the same work is still asked for in the same repository, even when its title, body or rules change. A new issue is only for work no earlier issue covers. Why: an issue that keeps its number keeps its links, its place in the GitHub Project, and everything people wrote on it.
+
+**CMP-78.** Continuing has limits. The plugin checks them with CMP-70, and a plan that breaks one fails the compile as CMP-17 says:
+- it continues an issue from the earlier compile that is still open
+- it stays in the same repository
+- an epic continues an epic, and an issue continues an issue (a sub-issue counts as an issue)
+- no earlier issue is continued twice
+
+**CMP-79.** For each issue it continues, Claude says in one sentence what changed and why, like "Now names the description of each check, answered in STAT-10."
+
+### What happens on GitHub
+
+**CMP-80.** Once Claude's plan passes CMP-70, the plugin brings GitHub in line with it, in this order:
+1. **Create** each new issue as CMP-63 to CMP-67 say.
+2. **Update** each continued issue: its title, body, rules and short name become the new plan's, and it gets a comment with CMP-79's sentence and the revision it was planned from. An issue whose title and body don't change gets no comment.
+3. **Link** sub-issues to match the new plan. A continued issue moves under the new plan's epic, and leaves an epic that isn't in the plan.
+4. **Close** each earlier issue the new plan doesn't continue, as not planned, with the comment "No longer planned after {revision}. The new plan is {epic or issues}." When the new plan is empty (CMP-71), the comment is "The model no longer asks for this work ({revision})."
+
+Why: updating first keeps every issue that can be kept. Closing comes last, so no work is closed before its new issue exists.
+
+**CMP-81.** When a step fails, the report lists what's still to do and offers Retry, which carries on from there. Discard (CMP-68) is offered only while no earlier issue has been changed. Once one has, Discard is gone, because an edit on GitHub can't be undone. The marker moves once every step is done.
+
+**CMP-82.** When a recompile fails, is cancelled or can't start before step 1, the earlier compile's issues stay as they were, and it can still be built or recompiled. The marker follows CMP-22 and CMP-23. Why: a failed plan must never throw away a good one.
+
+**CMP-83.** After a recompile, its report owns every issue it created or continued. Build builds them from the new report, in the new plan's order.
 
 ## Last compile marker
 

@@ -2,7 +2,7 @@ Build turns the issues a compile created into code: one issue into one pull requ
 
 ## Starting a build
 
-**BLD-1.** A build starts from the Build button in the report of a compile that created issues, or the command "Build", which builds the issues of the newest such compile. When a compile creates issues, the report asks "{n} issues are ready. Build them now?" with Build and Later. There are no other triggers. Why: Compile only plans, and the engineer chooses when the plan becomes code.
+**BLD-1.** A build starts from the Build button in the report of a compile that created issues, or the command "Build", which builds the issues of the newest such compile. When a compile creates issues, the report asks "{n} issues are ready. Build them now?" with Build and Recompile (CMP-72 in [[Compile]]). There are no other triggers. Why: Compile only plans, and the engineer chooses when the plan becomes code.
 
 **BLD-2.** A build builds the issues of one compile. Only one compile or build may run at a time (CMP-3).
 
